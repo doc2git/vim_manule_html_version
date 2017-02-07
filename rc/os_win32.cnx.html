@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/os_win32.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Special { color: #c000c0; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Todo { color: #000000; background-color: #ffff00; padding-bottom: 1px; }
+.Identifier { color: #008080; }
+.PreProc { color: #c000c0; }
+.Type { color: #008000; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">os_win32.txt</span>  For <span class="Identifier">Vim version 7.3.</span>  最后更新: 2010年7月
+
+
+		  VIM 参 考 手 册    作者：George Reilly
+		                     <span class="Identifier">译者</span>: Dasn, tocer
+		                     <span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>
+
+						<span class="Constant">win32</span> <span class="Constant">Win32</span> <span class="Constant">MS-Windows</span>
+本文描述 Vim Win32 版本的一些特性。
+
+Vim 的 Win32 版本可以在 Windows NT、95、98、ME、XP、Vista 和 Windows 7
+上运行，并且有 console (控制 台，就是命令提示符窗口 <span class="Identifier">译者</span>) 和 GUI (图形界面)
+两个版本。
+
+32 位版本也可运行在 64 位 MS-Windows 系统上。
+
+有用于 Windows 3.1[1] Win32s 子系统的 GUI 版本。你也可以用 Vim 的 32 位 DOS
+版本来代替。参见 <span class="Identifier">os_msdos.txt</span>。
+
+1. 一些已知的问题		<span class="Identifier">win32-problems</span>
+2. 启动				<span class="Identifier">win32-startup</span>
+3. 恢复屏幕内容			<span class="Identifier">win32-restore</span>
+4. 使用鼠标			<span class="Identifier">win32-mouse</span>
+5. 在 Windows 3.1 下运行	<span class="Identifier">win32-win3.1</span>
+6. Win32 常见问题解答 (迷你版)	<span class="Identifier">win32-faq</span>
+
+此外，还有一些 Win32 和 DOS 版本通用的条目：
+文件位置			<span class="Identifier">dos-locations</span>
+使用反斜杠			<span class="Identifier">dos-backslash</span>
+标准映射			<span class="Identifier">dos-standard-mappings</span>
+屏幕的输出与颜色		<span class="Identifier">dos-colors</span>
+文件格式			<span class="Identifier">dos-file-formats</span>
+:cd 命令			<span class="Identifier">dos-:cd</span>
+中止键				<span class="Identifier">dos-CTRL-Break</span>
+临时文件			<span class="Identifier">dos-temp-files</span>
+默认的 Shell 选项		<span class="Identifier">dos-shell</span>
+
+Win32 用户图形界面		<span class="Identifier">gui-w32</span>
+
+作者：
+Win32 版本的作者是 George V. Reilly &lt;george@reilly.org&gt;。
+最初 Windows NT 版本的移植工作是由 Roger Knobbe &lt;RogerK@wonderware.com&gt; 完成
+的。
+GUI 版本的作者是 George V. Reilly 和 Robert Webb。
+
+有关编译的讨论请参考 &quot;src/INSTALLpc.txt&quot;。		<span class="Constant">win32-compiling</span>
+
+<span class="PreProc">==============================================================================</span>
+1. 一些已知的问题				<span class="Constant">windows95</span> <span class="Constant">win32-problems</span>
+
+Vim 在 Windows 95 的控制台里运行时会出一些问题。据我们所知，这些问题在 Windows
+98 和 Windows ME 上也会出现。
+
+微软内部人士的话：&quot;Win95 的控制台一直不稳定，并且将永远这样。&quot;
+
+1、不支持死键 (dead key，与重音有关的键，下文有解释 <span class="Identifier">译者</span>注)。
+2、可以用命令 &quot;:set columns=nn lines=nn&quot; 改变窗口大小，但是此后执行外部命令可
+   能会使系统挂起或当机。
+3、屏幕刷新慢，除非你把 <span class="Type">'columns'</span> 和 <span class="Type">'lines'</span> 设置为 非 DOS 标准值，但是这样会
+   引起上述第二个问题！
+
+如果这些问题影响你的使用，你可以换用 32 位的 MS-DOS 版本 或 Win32 GUI 版本。
+
+自动补全文件名的时候，虽然 Vim 会匹配短的文件名，但是却会寻找并使用对应的相应
+的长文件名。例如，如果有一个长文件名 &quot;this_is_a_test&quot;，其短文件名是
+&quot;this_i~1&quot;，命令 &quot;:e *1&quot; 编辑文件 &quot;this_is_a_test&quot;。
+
+<span class="PreProc">==============================================================================</span>
+2. 启动							<span class="Constant">win32-startup</span>
+
+当前目录						<span class="Constant">win32-curdir</span>
+
+如果启动 Vim 时后面带一个文件名作为参数，并且指定了该文件的完整路径 (例如：以
+&quot;x:\&quot; 开头的路径)，Vim 会认为该文件是从文件管理器启动，并把当前目录 (:cd 命令
+查看 <span class="Identifier">译者</span>) 切换到文件所在目录。如果不想这样，只要把路径里的反斜杠 (&quot;\&quot;) 换成斜
+杠 (&quot;/&quot;) 即可。例如：
+
+<span class="Comment">	vim c:\text\files\foo.txt</span>
+
+当前目录切换到 &quot;C:\text\files&quot;。
+
+<span class="Comment">	vim c:/text\files\foo.txt</span>
+
+不改变当前目录。
+
+
+term 选项						<span class="Constant">win32-term</span>
+
+Vim 的 Win32 版本仅有的终端类型是 &quot;win32&quot;，它是内置的。如果你把 <span class="Type">'term'</span> 设置成
+其它的值，Vim 的行为就可能变的很奇怪。所以 Vim 不会从环境变量 &quot;TERM&quot; 里获取
+<span class="Type">'term'</span> 的值。
+
+$PATH 环境变量						<span class="Constant">win32-PATH</span>
+
+Vim 可执行程序的路径被加入到变量 $PATH 中。这主要使 &quot;!xxd&quot; 能够运行，因为它在
+工具菜单中。这也意味着当 executable() 返回 1 时，该可执行程序确实能够执行。
+
+<span class="PreProc">==============================================================================</span>
+3. 恢复屏幕内容						<span class="Constant">win32-restore</span>
+
+如果你设定了 <span class="Type">'restorescreen'</span> 选项 (默认设置)，当你退出 Vim 或者执行外部命令
+时，Vim 能恢复控制台原来的内容。可以用 &quot;:ser nors&quot; 命令关掉这个选项。
+							<span class="Identifier">'restorescreen'</span>
+
+<span class="PreProc">==============================================================================</span>
+4. 使用鼠标						<span class="Constant">win32-mouse</span>
+
+Vim 的 Win32 版本支持鼠标。如果你使用两键鼠标，可以用同时按下左右两键的办法来
+模拟第三键 (中键) － 但是，请<span class="Todo">注意</span>：在 Win32 GUI 上，如果你的右键用来呼叫弹出菜
+单 (参见 <span class="Type">'mouse'</span>)，那么你最好先按下鼠标左键 (左右两键同时按的时候，左键略快于
+右键 <span class="Identifier">译者</span>)。						<span class="Identifier">mouse-using</span>
+
+如果鼠标不好用，你可以试着禁用控制台的 &quot;快速编辑模式&quot;。
+
+<span class="PreProc">==============================================================================</span>
+5. 在 Windows 3.1 下运行				<span class="Constant">win32-win3.1</span>
+
+						<span class="Constant">win32s</span> <span class="Constant">windows-3.1</span>
+有一个特殊的 Win32 版本的 Gvim 可以在 Windows 3.1 和 3.11 运行。你需要用
+Visual C++ 4.1 编译 gvim.exe。
+
+要想在 Windows 3.1 或 3.11 上运行 Win32 版本的 Vim，你需要安装 Win32s (Win32s
+是微软发布的一套子系统，主要作用是让  Windows 3.1x 或  WfW 3.1x 这些 16 位操作
+系统借助其类库运行 32 位应用程序。<span class="Identifier">译者</span>)。也许你在安装别的软件时已经安装了
+Win32s。如果 Vim 不能正常运行，请下载最新的 1.30c 版本的 Win32s。你可以在这
+里下载：
+
+	<span class="Constant"><a href="http://support.microsoft.com/download/support/mslfiles/pw1118.exe">http://support.microsoft.com/download/support/mslfiles/pw1118.exe</a></span>
+
+(微软又把它换地方了！我们现在也不知道在哪里 :-( )。
+
+gvim.exe 之所以有两个版本，是因为 Win32s 版本是用 VC++ 4.1 编译的。这是最后一
+个支持 Win32s 的 VC++。VC++ 5.0 好一些，所以用它来编译 Win32 版本。除此以外，
+这两个版本没有什么不同。如果你在一个混合环境里工作，你可以使用 Win32s 的
+gvim.exe，两者都支持。
+
+Win32s 版本的 gvim 与 95/NT 系统上运行的 Win32 版本的 gvim 是一样的。在 Win32s
+系统里有以下不同：
+－你不能使用长文件名，因为 Windows 3.1 不支持！
+－执行外部命令时无退出码。在 &quot;:make&quot; 之后，必须要自己 &quot;:cn&quot;。
+
+<span class="PreProc">==============================================================================</span>
+6. Win32 常见问题解答 (迷你版)				<span class="Constant">win32-faq</span>
+
+问：为什么 Win32 版本的 Vim 在 Windows 95 里运行时屏幕的更新速度特别慢？
+答：Win95 对 32 位控制台程序的支持很不好，有许多 Bug。不知道什么原因，Vim 在标
+    准解析模式 (80x25，80x43，80x50) 下屏幕更新速度特别慢，而 16 位 DOS 版本比
+    Win32 版本要快得多。如果改变一下行列的值 (例如：&quot;:set columns=100&quot; 或
+    &quot;:set lines=40&quot;)，更新速度就会和 16 位 DOS 版本一样快。
+
+    警告：改变 <span class="Type">'columns'</span> 属性可能导致 Windows 95 在刷新时死机 (要抱怨就找微软
+    吧！)，不过在大多数情况下没什么问题，所以这一属性还保留着，但是一定要慎用
+    <span class="Type">'columns'</span>。
+
+    改变屏幕的解析度可以加快屏幕更新，但是它会带来其它的问题。比如，如果你不使
+    用标准的解析模式，特别是当 <span class="Type">'columns'</span> 的值不是 80 的时候，执行外部命令 (例
+    如：&quot;:!dir&quot;) 会导致 Vim 停止响应。一旦这种情况发生，就不可能把解析模式改回
+    到执行外部命令之前的状态，所以在修改 <span class="Type">'lines'</span> 和 <span class="Type">'columns'</span> 的时候要特别、特
+    别小心！事实上，如果 <span class="Type">'columns'</span> 的值不是 80，Vim 不会让你执行外部命令，不然
+    之后死机就麻烦了。
+
+    在 Windows NT 上没有这些问题。无论 <span class="Type">'lines'</span> 和 <span class="Type">'columns'</span> 是什么值，屏幕更新
+    速度都很快，外部命令也不会使 Vim 停止响应。
+
+问：Windows 95 上，既然 Win32 版本屏幕更新的速度不如 16 位 DOS 版本快，那我为
+    什么还要用 Win32 版本？
+答：首先，Win32 版本不像想象的那么慢，尤其是把 <span class="Type">'lines'</span> 和 <span class="Type">'columns'</span> 设置成非标
+    准数值后，速度还是挺快的。其次，16 位的 DOS 版本有许多的限制，例如：不能做
+    过大的改动；不能处理长文件名。Win32 版本没有这些限制，并且总的来看，还是
+    Win32 版本快 (对于 32 位的 DJGPP DOS 版本的 Vim 也一样)。Win32 版本在对屏
+    幕、鼠标和键盘的控制上，要比 DJGPP 版本好。
+
+问：在 Windows NT 上，16 位的 DOS 版本 和 Win32 版本那个好？
+答：为什么要在 NT 上运行 16 位 DOS 版本？在 NT 上运行 Win32 版本的 Vim 时，屏
+    幕的更新速度和 16 位的 DOS 版本一样快，并且也没有上面所提到的一些限制。还
+    有， DOS 程序启动和运行的速度都比 Win32 慢。在非 Intel 构架的 NT 平台上，
+    DOS 应用程序在 80x86 虚拟机上运行，所以特别慢，简直无法使用。
+
+问：怎样改变字体？
+答：在 GUI 版本里，可以用 <span class="Type">'guifont'</span> 选项。例如:
+<span class="Comment">	:set guifont=Lucida_Console:h15:cDEFAULT</span>
+   在控制台版本里，你需要修改控制台窗口的字体，不能在 Vim 里修改字体。
+
+问：为什么我使用 &quot;:set lines=xx&quot; 或其它相似的命令改变控制台窗口大小时，字体会
+    改变？(Win95)
+答：你在 MS-DOS 命令提示的字体属性里设置了 '自动'，这使得 Win95 自动选择合适的
+    字体 (太糟了！)。明确地指定一种字体就可以解决这个问题。
+
+问：为什么不能在 Vim 里 &quot;粘贴&quot; (Win95)？
+答：在 MS－DOS 窗口的属性对话框中，找到 &quot;杂项/快速粘贴&quot;，把前面的对勾去掉。
+    你也需要在 Vim 里执行 &quot;:set paste&quot; 以避免副作用。	<span class="Identifier">'paste'</span>
+
+问：控制台版本的 Vim 怎样在 Windows 95 里输入死键？
+    (死键是重音键，诸如：尖音符号 (acute)，钝音符号 (grave)，umlaut (元音变音)
+    等，它们本身不能产生字符，但是当它们后面跟另外的键时就会产生语音字符，例
+    如：a-acute、e-grave、u-umlaut、n-tilde 等等。【这些语音符号通常出现在字母
+    的上面，举个例子，比如上面提到的 e-grave 是这个样子 è，因为原文中是用语言
+    描述的，没有直接引用这些字符，所以简单解释一下，<span class="Identifier">译者</span>注】。这些对大多数欧洲
+    语言很有用。据我所知，英语布局的键盘不用死键)。
+答：不能。Windows 95 控制台的输入模块不能正确工作，我没有能力解决这些问题。下
+    面的话援引自微软一名资深程序员：
+        Win95 控制台一直不稳定，而且将永远这样。
+
+        这种不稳定性是不可避免的，因为我们徘徊于 MS-DOS 的键盘 TSR (比如
+        KEYB，我们需要它来加工数据，对国际版本很重要) 和 Win32 两个世界之间。
+
+        于是，在 MS-DOS 上不存在的按键 (比如死键) 在 Win32 控制台上却大量存
+        在，有些按键的功能也迥然不同 (比如 CapsLock)。这些都使得 Win95 的控制
+        台变得不稳定。
+
+        更不用说多语言键盘布局的问题……
+
+    也许你可以用二合字母机制 (digraphs) 来解决这个问题。<span class="Identifier">digraphs</span>
+
+    最好的解决方案是用 Win32 GUI 版本的 gvim.exe。要不然你就换一个支持死键的
+    DOS 版本的 Vim，有报告说那里没有问题。
+
+问：在 Windows NT 上怎样输入死键？
+答：NT 3.51 上可以正常输入死键，和在别的程序里的输入方法一样。
+    NT 4.0 上，你必须保证你的区域设置 (控制面板键盘) 和你当前使用的区域设置相
+    同。否则 NT 会崩溃。这是 NT 的问题，不是 Vim 的问题。
+
+问：我用 Vim 编辑一个符号链接，这个链接指向 UNIX NFS 文件服务器上的一个文件。
+    当我保存这个文件时，Vim 不能通过链接保存到服务器上，而是删除了这个链接，
+    创建了一个新的文件。为什么？
+答：在 UNIX 系统上，Vim 可以处理链接 (符号链接或硬链接)。Vim 先把文件写入一个
+    备份文件中，然后用备份文件覆盖原文件。这样做是为了保证所有属性都和原文件相
+    同。在非 UNIX 系统上，首先原文件被改名，然后写入新文件。只有保护位和原文件
+    相同。但是，这个方法不能处理 NFS 文件系统，那里除了链接还有一些其它问题。
+    唯一的解决办法是禁用备份文件，可以通过命令 &quot;:set nobackup nowritebackup&quot;
+    实现 						<span class="Identifier">'writebackup'</span>
+
+问：我正通过 Samba 使用 Vim 编辑 Unix 系统上的一个文件。当我保存文件时，文件所
+    有者被改变了。为什么？
+答：当保存文件时，Vim 会给原来文件换名，使之成为一个备份 (以防写入文件过程中失
+    败)。然后该文件作为一个新文件被保存。Samba 这时把它赋予文件系统上默认的所
+    有者，可能会和原所有者不一样。
+    为避免此问题，可以设置 <span class="Type">'backupcopy'</span> 选项为 &quot;yes&quot;。Vim 会用复制的方式建立备
+    份，然后再覆盖原文件。这样文件所有者就不会改变了。
+
+问：执行 &quot;:make&quot; 的时候怎样看到输出？
+答：通常，你需要一个 tee 程序，它可以把输入 (make 的输出) 复制到标准输出和错误
+    信息文件里。你可以在以下地址找到 tee (还有其它 GNU 工具)。
+    <span class="Constant"><a href="http://gnuwin32.sourceforge.net">http://gnuwin32.sourceforge.net</a></span> 或 <span class="Constant"><a href="http://unxutils.sourceforge.net">http://unxutils.sourceforge.net</a></span>
+    或者你也可以在 <span class="Constant"><a href="http://www.cygwin.com/">http://www.cygwin.com/</a></span> 下载 Cygnus 版本的 GNU 工具。
+    其它 Win32 上运行的 Unix 风格的工具可以在以下地址找到。
+    <span class="Constant"><a href="http://directory.google.com/Top/Computers/Software/Operating_Systems/Unix/Win32/">http://directory.google.com/Top/Computers/Software/Operating_Systems/Unix/Win32/</a></span>
+    得到了 tee 程序之后，你需要把下面的命令添加到你的 _vimrc 文件中：
+<span class="Comment">	:set shellpipe=\|\ tee</span>
+
+问：我把文件保存到一台运行 VisionFS 的远程计算机上，但是文件找不到了！
+答：VisionFS 不能处理特定的句号 (.) 加三个字母的扩展名，SCO 声称这是为了兼容
+    16 位的 DOS/Windows 环境。下面的两个命令可以说明问题：
+
+<span class="Comment">	echo Hello &gt; file.bat~</span>
+<span class="Comment">	dir &gt; file.bat</span>
+
+    &quot;dir&quot; 命令的输出被定向到 &quot;file.bat~&quot; 文件，而并没有新建一个 &quot;file.bat&quot; 文
+    件。这种行为在 Vim 里的体现就是，当你编辑一个名为 &quot;foo.bat&quot; 的文件时，Vim
+    会自动创建名为文件名加上 '~' 字符的临时文件，也就是 &quot;foo.bat~&quot;。写入
+    &quot;foo.bat&quot; 文件时，最后它倒被删除了 (<span class="Identifier">译者</span>注: Vim 想删除的本来是临时文件)。
+
+    解决办法: 在你的 _vimrc 文件里加入：
+<span class="Comment">	:set backupext=.temporary</span>
+
+问：怎样改变光标闪烁的频率？
+答：不能改。这是 NT 控制台的一个限制，据报告，NT 5.0 可以一次改变所有控制台的
+    闪烁频率。
+
+							<span class="Constant">:!start</span>
+问：如何异步地执行一个外部命令？
+答：执行外部命令的时候，你可以用 &quot;:!start&quot; 代替 &quot;:!&quot;
+<span class="Comment">	:!start winfile.exe&lt;CR&gt;</span>
+   用 &quot;start&quot; 命令不像 &quot;:!&quot; 那样 (切换到另一个屏幕、调用一个新的控制台，然后
+    等待程序执行结束)；该命令的使用，意味着你所运行的程序不会影响到当前编辑的
+    文件。用 &quot;:!start&quot; 命令运行程序不会得到 Vim 的打开文件句柄，这意味着他们不
+    需要在 Vim 之前退出。
+    要避免这种特殊照顾，可以用 &quot;:! start&quot;。
+
+问：我用 Win32s 版本，每当我执行外部命令时 (比如 &quot;make&quot;)，Vim 不等程序执行完毕
+    就返回了！帮帮忙！
+答：问题出在 32 位应用程序 (Vim) 不能从 16 位应用程序 (你的 DOS 程序) 中得到程
+    序执行完成的信号。Vim 可以解决类似的问题，但是必须设置一下你的 DOS 命令，
+    让它在窗口里运行，而不是全屏状态。不巧的是，安装 Windows 后的默认值是 &quot;全
+    屏&quot;。要改变这一设置：
+    1) 打开 PIF 编辑器 (在主程序组里)。
+    2) 打开 &quot;_DEFAULT.PIF&quot; 文件 (在 Windows 目录下)。
+    3) 把显示选项从 &quot;全屏&quot; 改为 &quot;窗口&quot;。
+    4) 保存退出。
+
+    测试，启动 Vim，输入
+<span class="Comment">	:!dir C:\&lt;CR&gt;&quot;</span>
+   你应该看到一个 DOS 窗口短暂出现，显示文件及目录列表。
+
+问：我在 Win32s 和 NT 上使用 Vim。在 NT 上，我可以把控制台的默认值设置为 50
+    行，这样当我用 &quot;:sh&quot; 命令时，就会得到一个 80x50 的 shell。我可以在 Win3.1x
+    下这样做么？我会不会只能使用 80x25？
+答：编辑 SYSTEM.INI 文件，在 <span class="Special">[NonWindowsApp]</span> 一节加入 &quot;ScreenLines=50&quot;。这样，
+    DOS 窗口和外部 DOS 命令就会在 50 行的窗口里运行。
+
+ vim&#0058;tw=78:fo=tcq2:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

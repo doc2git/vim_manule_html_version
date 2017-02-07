@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/os_390.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Special { color: #c000c0; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Todo { color: #000000; background-color: #ffff00; padding-bottom: 1px; }
+.Identifier { color: #008080; }
+.PreProc { color: #c000c0; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">os_390.txt</span>    For <span class="Identifier">Vim version 7.3.</span>  最近更新: 2010年7月
+
+
+		  <span class="Identifier">VIM 参考手册	  by Ralf Schandl</span>
+				<span class="Identifier">译者</span>: Willis
+				<span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>
+
+					<span class="Constant">zOS</span> <span class="Constant">z/OS</span> <span class="Constant">OS390</span> <span class="Constant">os390</span> <span class="Constant">MVS</span>
+本文包含了 VIM 的 z/OS UNIX 版本的特点。
+
+1. 依赖于 ASCII/EBCDIC 编码的脚本	<span class="Identifier">zOS-has-ebcdic</span>
+2. Putty 和色彩				<span class="Identifier">zOS-PuTTY</span>
+3. Motif 的问题				<span class="Identifier">zOS-Motif</span>
+4  漏洞					<span class="Identifier">zOS-Bugs</span>
+5. 限制					<span class="Identifier">zOS-limitations</span>
+6. z/OS UNIX 上的开源软件		<span class="Identifier">zOS-open-source</span>
+
+<span class="PreProc">贡献者:</span>
+本 z/OS UNIX 的移植是由 Ralf Schandl 为了下面提到的红皮书完成的。
+
+提供修改、报告漏洞、或者两者都有者:
+
+	David Moore
+	Anthony Giorgio
+	还有其他
+
+<span class="PreProc">==============================================================================</span>
+1. 依赖于 ASCII/EBCDIC 的脚本		<span class="Constant">OS390-has-ebcdic</span> <span class="Constant">zOS-has-ebcdic</span>
+
+为了内部脚本语言的编写方便，增加了 &quot;ebcdic&quot; 特性。所以你可以用以下方式修正依赖
+于ASCII 的脚本:
+
+<span class="Comment">    if has(&quot;ebcdic&quot;)</span>
+<span class="Comment">	let space = 64</span>
+<span class="Comment">    else</span>
+<span class="Comment">	let space = 32</span>
+<span class="Comment">    endif</span>
+
+<span class="PreProc">==============================================================================</span>
+2. PuTTY 和色彩				<span class="Constant">OS390-PuTTY</span> <span class="Constant">zOS-PuTTY</span>
+
+如果使用 PuTTY 连接到 z/OS 有语法高亮的问题或者显示不正常，可以:
+
+- 配置 Putty 使用 &quot;vt220&quot; 终端 (Connection-&gt;Data)
+- 在 vimrc 加入以下 3 行:
+
+
+<span class="Comment">    set t_AB=^[[4%p1%dm</span>
+<span class="Comment">    set t_AF=^[[3%p1%dm</span>
+<span class="Comment">    set t_CO=8</span>
+
+
+<span class="Todo">注意</span>: ^[ 是一个字符，用 <span class="Special">&lt;C-V&gt;&lt;Esc&gt;</span> 可以输入。
+
+<span class="PreProc">==============================================================================</span>
+3. Motif 问题				<span class="Constant">OS390-Motif</span> <span class="Constant">zOS-Motif</span>
+
+<span class="Todo">备注</span>: Vim 6.* 发现过，此后没有测试过。
+
+看起来，在移植 Motif 库到 z/OS 的时候，忘记把下拉菜单的快捷键从 EBCDIC 翻译成
+ASCII 了。即使在我手动修改菜单以后，快捷键也只能打开菜单 (比如 <span class="Special">&lt;Alt-F&gt;</span> 打开
+文件菜单)，但是不能打开菜单项 (比如 <span class="Special">&lt;Alt-F&gt;</span>O 打开文件浏览器)。
+
+现在还没有这个问题的解决方法。
+
+<span class="PreProc">==============================================================================</span>
+4. 漏洞					<span class="Constant">OS390-bugs</span> <span class="Constant">zOS-Bugs</span>
+
+- 在可视块模式，如果选择了大量的文本，Vim 一定会挂起。这可能是由一个内存错误引
+  起的。 <span class="Todo">注意</span> 终端和 GUI 版本都存在这个问题。
+
+<span class="PreProc">==============================================================================</span>
+5. 限制		   			<span class="Constant">OS390-limitations</span> <span class="Constant">zOS-limitations</span>
+
+- tag 文件不能进行二进制查找。
+  /bin/sort 程序缺省按照 ASCII 值排序。通常，ctags 调用这个程序来为标签 (tag)
+  排序。也许有一个 ctags 版本能够做正确的事情，不过我们不能肯定。看起来，这是
+  个永久的限制。
+
+- 在我们的大型机上测试的版本上，cscope 接口 (<span class="Identifier">cscope</span>) 不能工作。我们有一个
+  15.0b12 版本的。在用 &quot;cscope add&quot; 命令的时候，它使得 Vim 挂起。我猜这是因为
+  cscope 数据库的二进制格式和 Vim 期待的不符所致。我试图把最新的 cscope (15.3)
+  移植到 z/OS 上，看来成效不大。如果有人有兴趣尝试并有进展，请给我个消息。
+
+- 没有 glib/gtk 支持。我不能成功在 z/OS UNIX 上编译 glib。这意味着你没法用漂亮
+  的 gtk 工具栏了。
+
+编译时关闭的功能:
+    - 多字节支持	        (<span class="Identifier">multibyte</span>)
+    - 从右到左模式	        (<span class="Identifier">rileft</span>)
+    - 波斯键盘映射	        (<span class="Identifier">Farsi</span>)
+    - 阿拉伯语言支持		(<span class="Identifier">Arabic</span>)
+    - 拼写检查		        (<span class="Identifier">spell</span>)
+
+还未测试:
+    - Perl 接口			(<span class="Identifier">perl</span>)
+    - 韩语 (Hangul) 输入	(<span class="Identifier">hangul</span>)
+    - 加密支持			(<span class="Identifier">encryption</span>)
+    - 语言映射			(<span class="Identifier">'langmap'</span>)
+    - Python 支持		(<span class="Identifier">Python</span>)
+    - 从右到左模式		(<span class="Identifier">'rightleft'</span>)
+    - SNiFF+ 接口		(<span class="Identifier">sniff</span>)
+    - TCL 接口			(<span class="Identifier">tcl</span>)
+    ...
+
+如果你尝试过这些特性而且成功了，告诉我们！
+
+<span class="PreProc">==============================================================================</span>
+6. z/OS UNIX 上的开源软件		<span class="Constant">OS390-open-source</span> <span class="Constant">zOS-open-source</span>
+
+如果你对 z/OS UNIX 上的其它开源软件感兴趣，请参考以下的红皮书:
+
+    Mike MacIsaac et al
+    &quot;Open Source Software for z/OS and OS/390 UNIX&quot;
+    IBM Form Number: SG24-5944-01
+    ISBN: 0738424633
+    <span class="Constant"><a href="http://www-03.ibm.com/systems/resources/servers_eserver_zseries_zos_unix_redbook_sg245944.pdf">http://www-03.ibm.com/systems/resources/servers_eserver_zseries_zos_unix_redbook_sg245944.pdf</a></span>
+
+另见:
+    <span class="Constant"><a href="http://www.redbooks.ibm.com">http://www.redbooks.ibm.com</a></span>
+    <span class="Constant"><a href="http://www-03.ibm.com/systems/z/os/zos/features/unix/">http://www-03.ibm.com/systems/z/os/zos/features/unix/</a></span>
+    <span class="Constant"><a href="http://www-03.ibm.com/systems/z/os/zos/features/unix/library/IBM+Redbooks/index.html">http://www-03.ibm.com/systems/z/os/zos/features/unix/library/IBM+Redbooks/index.html</a></span>
+
+
+
+<span class="PreProc">------------------------------------------------------------------------------</span>
+ vim&#0058;tw=78:fo=tcq2:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/pi_gzip.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Constant { color: #c00000; }
+.Special { color: #c000c0; }
+.Identifier { color: #008080; }
+.PreProc { color: #c000c0; }
+.Type { color: #008000; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">pi_gzip.txt</span>	For <span class="Identifier">Vim version 7.3.</span>  最近更新: 2005年3月
+
+
+		     Vim 参考手册    作者：Bram Moolenaar
+	   <span class="Identifier">译者</span>: iCrazy &lt;icrazy@ustc.edu&gt;  <span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>
+
+
+用 Vim 编辑压缩的文件				<span class="Constant">gzip</span> <span class="Constant">bzip2</span> <span class="Constant">compress</span>
+
+1. 自动命令			<span class="Identifier">gzip-autocmd</span>
+
+这里涉及到的功能是一个 <span class="Identifier">standard-plugin</span>。
+这个插件仅在 <span class="Type">'compatible'</span> 选项没有被置位的情况下有效。
+您可以通过设置变量 &quot;loaded_gzip&quot; 来避免装载这个插件：
+	:let loaded_gzip = 1
+
+<span class="Special">{Vi 没有以上的功能}</span>
+
+<span class="PreProc">==============================================================================</span>
+1. 自动命令						<span class="Constant">gzip-autocmd</span>
+
+这个插件建立自动命令来截获对具有以下扩展名的文件的读写：
+
+	<span class="PreProc">扩展名		压缩格式</span>
+	*.Z		compress (Lempel-Ziv)
+	*.gz		gzip
+	*.bz2		bzip2
+
+您仅仅知道这些就已经足够了，此插件没有选项。
+
+在解压缩一个文件之后，会自动重新检测文件格式。这样可能会使一个类似 &quot;foo.c.gz&quot;
+的文件具有 &quot;c&quot; 的文件格式。
+
+如果您设置了 <span class="Type">'patchmode'</span>，在进行压缩后该值会被自动加到文件的扩展名后面。因而编
+辑 patchmode 文件不会产生自动解压缩的效果。如果您希望这样，您需要改变文件名。
+
+<span class="PreProc">==============================================================================</span>
+ vim&#0058;tw=78:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

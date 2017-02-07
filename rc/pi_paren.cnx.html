@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/pi_paren.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.PreProc { color: #c000c0; }
+.Identifier { color: #008080; }
+.Todo { color: #000000; background-color: #ffff00; padding-bottom: 1px; }
+.Type { color: #008000; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">pi_paren.txt</span>  For <span class="Identifier">Vim version 7.3.</span>  最近更新: 2008年6月
+
+
+		  <span class="Identifier">VIM 参考手册	  by Bram Moolenaar</span>
+				<span class="Identifier">译者</span>: Willis
+				<span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>
+
+
+高亮匹配括号						<span class="Constant">matchparen</span>
+
+这里提到的功能是一个标准插件 <span class="Identifier">standard-plugin</span>。
+只有 <span class="Type">'compatible'</span> 不置位时才能使用此插件。
+
+设置 &quot;loaded_matchparen&quot; 变量可以避免载入此插件:
+<span class="Comment">	:let loaded_matchparen = 1</span>
+
+此插件安装 CursorMoved、CursorMovedI 和 WinEnter 自动命令来重新定义匹配高亮。
+
+					<span class="Constant">:NoMatchParen</span> <span class="Constant">:DoMatchParen</span>
+要在载入此插件后关闭它，用:
+
+<span class="Comment">	:NoMatchParen</span>
+
+要再次打开:
+
+<span class="Comment">	:DoMatchParen</span>
+
+使用的高亮是 MatchParen。&quot;:highlight&quot; 命令可用来为它指定不同的颜色。例如:
+
+<span class="Comment">	:hi MatchParen ctermbg=blue guibg=lightblue</span>
+
+匹配的字符组来自 <span class="Type">'matchpairs'</span> 选项。你可以改变该值来高亮不同的匹配。<span class="Todo">注意</span> 不是
+什么值都可以。比如，你不能高亮单引号或双引号，因为它们的开始和结束字符相同。
+
+使用语法高亮的属性。如果光标目前不在字符串或注释语法项目里，则忽略字符串和注释
+里的匹配。任何名字里包含 &quot;string&quot; 或 &quot;comment&quot; 的语法项目都被认为是字符串或注
+释项目。
+
+移动光标时，限制搜索范围以避免延迟。这些限制包括:
+- 窗口的可见部分。
+- 光标上下 100 行，避免关闭折叠存在时的延迟过长。
+- 光标前后 <span class="Type">'synmaxcol'</span> 乘以 2 个字节，避免存在带语法高亮的长行时延迟过长。
+
+
+如果你希望 <span class="Identifier">%</span> 命令更好的工作，可以使用 matchit 插件，见 <span class="Identifier">matchit-install</span>。该
+插件也可用于跳过注释里的匹配。这不同于 matchparen 高亮，两者使用不同的机制。
+
+<span class="PreProc">==============================================================================</span>
+ vim&#0058;tw=78:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

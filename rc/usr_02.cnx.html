@@ -1,0 +1,532 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/usr_02.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Todo { color: #000000; background-color: #ffff00; padding-bottom: 1px; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Special { color: #c000c0; }
+.Identifier { color: #008080; }
+.PreProc { color: #c000c0; }
+.Type { color: #008000; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">usr_02.txt</span>    For <span class="Identifier">Vim version 7.3.</span>     最后修改：2010年8月
+
+		  <span class="Identifier">VIM 用户手册 － Bram Moolenaar</span>
+		     (<span class="Identifier">译者</span>：Nek_in <span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>)
+
+ 			    Vim 初 步
+
+
+本章提供足够的信息使你用够使用 Vim 来做基本的编辑。这里提供的方法不一定是高效
+快捷的。但起码是有效的。花些时间去练习这些命令，这是后面的知识的基础。
+
+<span class="Identifier">02.1</span>	第一次运行 Vim
+<span class="Identifier">02.2</span>	插入文本
+<span class="Identifier">02.3</span>	移动光标
+<span class="Identifier">02.4</span>	删除字符
+<span class="Identifier">02.5</span>	撤销与重做
+<span class="Identifier">02.6</span>	其它编辑命令
+<span class="Identifier">02.7</span>	退出
+<span class="Identifier">02.8</span>	寻求帮助
+
+    下一章：<span class="Identifier">usr_03.txt</span> 移动
+    前一章：<span class="Identifier">usr_01.txt</span> 关于本手册
+      目录：<span class="Identifier">usr_toc.txt</span>
+
+<span class="PreProc">==============================================================================</span>
+<span class="Constant">02.1</span>	第一次运行 Vim
+
+启动 Vim 的命令如下：
+
+<span class="Comment">	gvim file.txt</span>
+
+在 UNIX 操作系统中，你可以在任意命令提示符下输入这个命令。如果你用的是
+Microsoft Windows，启动一个 MS-DOS 窗口，再输入这个命令。
+    无论哪一种方式，现在 Vim 开始编辑一个名为 file.txt 的文件了。由于这是一个
+新建文件，你会得到一个空的窗口。屏幕看起来会象下面这样：
+
+	+---------------------------------------+
+	|#					|
+	|~					|
+	|~					|
+	|~					|
+	|~					|
+	|&quot;file.txt&quot; [New file]			|
+	+---------------------------------------+
+		('#&quot;是当前光标的位置)
+
+以波纹线 (~) 开头的行表示该行在文件中不存在。换句话说，如果 Vim 打开的文件不能
+充满这个显示的屏幕，它就会显示以波纹线开头的行。在屏幕的底部，有一个消息行指示
+文件名为 file.txt 并且说明这是一个新建的文件。这行信息是临时的，新的信息可以覆
+盖它。
+
+
+VIM 命 令
+
+gvim 命令建立一个新窗口用于编辑。如果你用的是这个命令：
+
+<span class="Comment">	vim file.txt</span>
+
+则编辑在命令窗口内进行。换句话说，如果你在 xterm 中运行，编辑器使用 xterm 窗
+口。如果你用的是 Microsoft Window 的 MS-DOS 窗口，编辑器使用这个 MS-DOS 窗口。
+两个版本显示出来的文本看起来是一样的。但如果你用的是 gvim，就会有其他特性，如
+菜单栏。后面会有更多的描述。
+
+<span class="PreProc">==============================================================================</span>
+<span class="Constant">02.2</span>	插入文本
+
+Vim 是一个多模式的编辑器。就是说，在不同模式下，编辑器的响应是不同的。在普通模
+式下，你敲入的字符只是命令；而在插入模式，你敲入的字符就成为插入的文本了。
+    当你刚刚进入 Vim，它处在普通模式。通过敲入 &quot;i&quot; 命令 (i 是插入 (Insert) 的
+缩写) 可以启动插入模式，这样你就可以输入文字了，这些文字将被插入到文件中。不用
+担心输错了，你随后还能够修正它。要输入下文的程序员打油诗，你可以这样敲：
+
+<span class="Comment">	iA very intelligent turtle</span>
+<span class="Comment">	Found programming UNIX a hurdle</span>
+
+输入 &quot;turtle&quot; 后，按回车开始一个新行。最后，你输入 <span class="Special">&lt;Esc&gt;</span> 键退出插入模式而回到
+普通模式。现在在你的 Vim 窗口中就有两行文字了：
+
+	+---------------------------------------+
+	|A very intelligent turtle		|
+	|Found programming UNIX a hurdle	|
+	|~					|
+	|~					|
+	|					|
+	+---------------------------------------+
+
+
+我 在 什 么 模 式？
+
+要看到你在什么模式，输入如下命令：
+
+<span class="Comment">	:set showmode</span>
+
+你会发现当你敲入冒号后，Vim 把光标移到窗口的最后一行。那里是你输入 &quot;冒号命令&quot;
+(以冒号开头的命令) 的地方，敲入回车结束这个命令的输入 (所有的冒号命令都用这种
+方式结束)。
+    现在，如果你输入 &quot;i&quot; 命令，Vim 会在窗口的底部显示 --INSERT-- (中文模式显示
+的是 --插入--  <span class="Identifier">译者</span>注)，这表示你在插入模式。
+
+	+---------------------------------------+
+	|A very intelligent turtle		|
+	|Found programming UNIX a hurdle	|
+	|~					|
+	|~					|
+	|-- INSERT --				|
+	+---------------------------------------+
+
+如果你输入 <span class="Special">&lt;Esc&gt;</span> 回到普通模式，最后一行又变成空白。
+
+
+摆 脱 麻 烦
+
+Vim 新手常常遇到的一个问题是不知道自己在什么模式下，可能是因为忘了，也可能是因
+为不小心敲了一个切换模式的命令。无论你在什么模式，要回到普通模式，只要敲 <span class="Special">&lt;Esc&gt;</span>
+就可以了。有时你需要敲两次，如果 Vim 发出 &quot;嘀&quot; 一声，就表示你已经在普通模式
+了。
+
+<span class="PreProc">==============================================================================</span>
+<span class="Constant">02.3</span>	移动光标
+
+回到普通模式后，你可以使用如下命令移动光标：
+
+	h	左						<span class="Constant">hjkl</span>
+	j	下
+	k	上
+	l	右
+
+这些命令看起来是随便选的。无论如何，谁听说过用 l 表示右的？但实际上，作这些选
+择是有理由的：移动光标是最常用的编辑器命令。而这些键位在你的右手本位。也就是
+说：这种键位的设定使你可以用最快的速度执行移动操作 (特别是当你用十指输入的时
+候)。
+
+	<span class="Todo">备注</span>:
+	你还可以用方向键移动光标，但这样会减慢你输入的速度，因为你必须把你的手
+	从字母键移动到方向键。想象一下，你在一个小时内可要这样做几百次，这可要
+	花相当多的时间的。
+	    而且，有一些键盘是没有方向键的，或者放在一些很特别的地方。所以，知
+	道 hjkl 的用法在这些情况下就很有帮助了。
+
+记住这些命令的一个方法是：h 在左边，l 在右边，j 指着下面。用图表示如下：
+
+<span class="Comment">		       k</span>
+<span class="Comment">		   h     l</span>
+<span class="Comment">		     j</span>
+
+学习这些命令的最好方法是使用它。用 &quot;i&quot; 命令输入更多的文字。然后用 hjkl 键移动
+光标并在某些地方输入一些单词。别忘了用 <span class="Special">&lt;Esc&gt;</span> 切换回普通模式。<span class="Identifier">vimtutor</span>也是一
+个练习的好办法。
+
+<span class="PreProc">==============================================================================</span>
+<span class="Constant">02.4</span>	删除字符
+
+要删除一个字符，把光标移到它上面然后输入 &quot;x&quot;。(这是对以前的打字机的一种回归，
+那时你通过在字符上输入 xxxx 删除它) 例如，把光标移到行首，然后输入xxxxxxx (七
+个x) 可以删除 &quot;A very &quot;。结果看起来这样：
+
+	+---------------------------------------+
+	|intelligent turtle			|
+	|Found programming UNIX a hurdle	|
+	|~					|
+	|~					|
+	|					|
+	+---------------------------------------+
+
+现在你可以输入新的字符了，例如，通过输入：
+
+<span class="Comment">	iA young &lt;Esc&gt;</span>
+
+这个命令启动一次插入操作 (那个 &quot;i&quot;)，并插入 &quot;A young&quot;，然后退出插入模式 (最后
+一个 <span class="Special">&lt;Esc&gt;</span>)。结果是：
+
+	+---------------------------------------+
+	|A young intelligent turtle		|
+	|Found programming UNIX a hurdle	|
+	|~					|
+	|~					|
+	|					|
+	+---------------------------------------+
+
+
+删 除 一 行
+
+要删除一整行，使用 &quot;dd&quot; 命令，后一行会移上来填掉留下的空行：
+
+	+---------------------------------------+
+	|Found programming UNIX a hurdle	|
+	|~					|
+	|~					|
+	|~					|
+	|					|
+	+---------------------------------------+
+
+删 除 一 个 换 行 符
+
+在 Vim 中你可以把两行连起来，这意味着删除两行间的换行符。&quot;J&quot; 命令用于完成这个
+功能。
+    以下面两行为例：
+
+<span class="Comment">	A young intelligent</span>
+<span class="Comment">	turtle</span>
+
+把光标移到第一行，然后按 &quot;J&quot;：
+
+<span class="Comment">	A young intelligent turtle</span>
+
+<span class="PreProc">==============================================================================</span>
+<span class="Constant">02.5</span>	撤销与重做
+
+假设现在你删得太多了。当然，你可以重新输入需要的内容。不过，你还有一个更简单的
+选择。&quot;u&quot; 命令撤销上一个编辑操作。看看下面这个操作：先用 &quot;dd&quot; 删除一行，再敲
+&quot;u&quot;，该行又回来了。
+    再给一个例子：把光标移到第一行的 A 上：
+
+<span class="Comment">	A young intelligent turtle</span>
+
+现在输入 xxxxxxx 删除 &quot;A young&quot;。结果如下：
+
+	<span class="PreProc">intelligent turtle</span>
+
+输入 &quot;u&quot; 撤销最后一个删除操作。那个删除操作删除字符 g，所以撤销命令恢复这个字
+符：
+
+	<span class="PreProc">g intelligent turtle</span>
+
+下一个 u 命令恢复倒数第二个被删除的字符：
+
+	<span class="PreProc">ng intelligent turtle</span>
+
+下一个 u 命令恢复 u，如此类推：
+
+	<span class="PreProc">ung intelligent turtle</span>
+	<span class="PreProc">oung intelligent turtle</span>
+	<span class="PreProc">young intelligent turtle</span>
+	<span class="PreProc">young intelligent turtle</span>
+	<span class="PreProc">A young intelligent turtle</span>
+
+	<span class="Todo">备注</span>:
+	如果你输入 &quot;u&quot; 两次，你的文本恢复原样，那应该是你的 Vim 被配置在 Vi 兼
+	容模式了。要修正这个问题，看看这里：<span class="Identifier">not-compatible</span>。
+	本文假定你工作在 &quot;Vim 的方式&quot;。你可能更喜欢旧的 Vi 的模式，但是你必须
+	小心本文中的一些小区别。
+
+
+重 做
+
+如果你撤销得太多，你可以输入 <span class="Special">CTRL-R</span> (redo) 回退前一个命令。换句话说，它撤销一
+个撤销。要看执行的例子，输入 <span class="Special">CTRL-R</span> 两次。字符 A 和它后面的空格就出现了：
+
+	<span class="PreProc">young intelligent turtle</span>
+
+有一个特殊版本的撤销命令：&quot;U&quot; (行撤销)。行撤销命令撤销所有在最近编辑的行上的操
+作。 输入该命令两次取消前一个 &quot;U&quot;：
+
+	<span class="PreProc">A very intelligent turtle</span>
+	  xxxx			删除 very
+
+	<span class="PreProc">A intelligent turtle</span>
+		      xxxxxx	删除turtle
+
+	<span class="PreProc">A intelligent</span>
+				用 &quot;U&quot; 恢复行
+	<span class="PreProc">A very intelligent turtle</span>
+				用 &quot;u&quot; 撤销 &quot;U&quot;
+	<span class="PreProc">A intelligent</span>
+
+&quot;U&quot; 命令本身就是一个改变操作，&quot;u&quot; 命令撤销该操作，<span class="Special">CTRL-R</span> 命令重做该操作。有点
+乱吧，但不用担心，用 &quot;u&quot; 和 <span class="Special">CTRL-R</span> 命令你可以切换到任何你编辑过的状态。更多信
+息可见 <span class="Identifier">32.2</span> 一节。
+
+<span class="PreProc">==============================================================================</span>
+<span class="Constant">02.6</span>	其它编辑命令
+
+Vim 有大量的命令可以修改文本。参见 <span class="Identifier">Q_in</span>和下文。这里是一些经常用到的：
+
+添 加
+
+&quot;i&quot; 命令在光标所在字符前面插入字符。一般情况下，这就够用了，但如果你刚好想在
+行尾加东西怎么办？要解决这个问题，你需要在文本后插入字符。这通过 &quot;a&quot; (append，
+附加) 命令实现。
+    例如，要把如下行
+
+	<span class="PreProc">and that's not saying much for the turtle.</span>
+改为
+	<span class="PreProc">and that's not saying much for the turtle!!!</span>
+
+把光标移到行尾的句号上。然后输入 &quot;x&quot; 删除它。现在光标处于一行的尾部了，现在输
+入
+
+<span class="Comment">	a!!!&lt;Esc&gt;</span>
+
+添加三个感叹号到 turtle 的 &quot;e&quot; 后面：
+
+	<span class="PreProc">and that's not saying much for the turtle!!!</span>
+
+
+开 始 一 个 新 行
+
+&quot;o&quot; 命令在光标下方建立一个新的空行，并把 Vim 切换到插入模式。然后你可以在这个
+新行内输入文本。
+    假定你的光标在下面两行中第一行的某个地方：
+
+	<span class="PreProc">A very intelligent turtle</span>
+	<span class="PreProc">Found programming UNIX a hurdle</span>
+
+如果你现在用 &quot;o&quot; 命令并输入新的文字：
+
+
+<span class="Comment">	oThat liked using Vim&lt;Esc&gt;</span>
+
+结果会是：
+
+	<span class="PreProc">A very intelligent turtle</span>
+	<span class="PreProc">That liked using Vim</span>
+	<span class="PreProc">Found programming UNIX a hurdle</span>
+
+&quot;O&quot; 命令 (大写) 在光标上方打开一个新行。
+
+
+指 定 计 数
+
+假定你想向上移动 9 行，你可以输入 &quot;kkkkkkkkk&quot; 或者你可以输入&quot;9k&quot;。实际上，你可
+以在很多命令前面加一个数字。例如在这章的前面，你通过输入 &quot;a!!!<span class="Special">&lt;Esc&gt;</span>&quot; 增加三个
+感叹号。另一个方法是使用命令 &quot;3a!<span class="Special">&lt;Esc&gt;</span>&quot;。计数 3 要求把后面的命令执行三次。同样
+的，要删除三个字符，可以使用 &quot;3x&quot;。计数总是放在要被处理多次的命令的前面。
+
+<span class="PreProc">==============================================================================</span>
+<span class="Constant">02.7</span>	退出
+
+使用 &quot;ZZ&quot; 命令可以退出。这个命令保存文件并退出。
+	<span class="Todo">备注</span>:
+	与其他编辑器不一样，Vim 不会自动建立一个备份文件。如果你输入 &quot;ZZ&quot;，你
+	的修改立即生效并且不能恢复。你可以配置 Vim 让它产生一个备份文件，参见
+	<span class="Identifier">07.4</span>。
+
+
+放 弃 修 改
+
+有时你会做了一系列的修改才突然发现还不如编辑之前。不用担心，Vim 有 &quot;放弃修改并
+退出&quot; 的命令，那就是：
+
+<span class="Comment">	:q!</span>
+
+别忘了按回车使你的命令生效。
+
+如果你关心细节，此命令有三部分组成：冒号 (:)，它使 Vim 进入命令模式， q 命令，
+它告诉 Vim 退出，而感叹号是强制命令修饰符。
+    这里，强制命令修饰符是必要的，它强制性地要求 Vim 放弃修改并退出。如果你只
+是输入 &quot;:q&quot;，Vim 会显示一个错误信息并拒绝退出：
+
+	<span class="PreProc">E37: No write since last change (use ! to override)</span>
+
+通过指定强制执行，你实际上在告诉 Vim：&quot;我知道我所做的看起来很傻，但我长大了，
+知道自己在做什么。&quot;
+
+如果你放弃修改后还想重新编辑，用 &quot;:e!&quot; 命令可以重新装载原来的文件。
+
+<span class="PreProc">==============================================================================</span>
+<span class="Constant">02.8</span>	寻求帮助
+
+所有你想知道的东西，都可以在 Vim 帮助文件中找到答案，随便问！
+    要获得一般的帮助，用这个命令：
+
+<span class="Comment">	:help</span>
+
+你还可以用第一个功能键 <span class="Special">&lt;F1&gt;</span>。如果你的键盘上有一个 <span class="Special">&lt;Help&gt;</span> 键，可能也有效。
+    如果你不指定主题，&quot;:help&quot; 将命令显示一个总览的帮助窗口。Vim 的作者在帮助系
+统方面使用了一个很聪明的方案 (也许可以说是很懒惰的方案)：他们用一个普通的编辑
+窗口来显示帮助。你可以在帮助窗口中使用任何普通的 Vim 命令移动光标。所以，h，
+j，k 和 l 还是表示左，下，上和右。
+    要退出帮助窗口，用退出一个普通窗口的命令：&quot;ZZ&quot;。这只会退出帮助窗口，而不会
+退出 Vim。
+
+当你阅读帮助的时候，你会发现有一些文字被一对竖线括起来了 (例如 <span class="Identifier">help</span>)。这表示
+一个超级链接。如果你把光标移到这两个竖线之间并按 <span class="Special">CTRL-]</span> (标签跳转命令)，帮助系
+统会把你引向这个超级链接指向的主题。(由于不是本章的重点，这里不详细讨论，Vim
+对超级链接的术语是 &quot;标签&quot; (tag)，所以 <span class="Special">CTRL-]</span> 实际是跳转到光标所在单词为名的标
+签所在的位置。)
+    跳转几次以后，你可能想回到原来的地方。<span class="Special">CTRL-T</span> (标签退栈) 把你送回前一个跳转
+点。<span class="Special">CTRL-O</span> (跳转到前一个位置) 也能完成相同的功能。
+    在帮助屏幕的顶上，有这样的记号：*help.txt*。&quot;*&quot; 之间的名字被帮助系统用来定
+义一个标签 (也就是超级链接的目标)。
+    参见 <span class="Identifier">29.1</span>可以了解更多关于标签的内容。
+
+要获得特定主题的帮助，使用如下命令：
+
+<span class="Comment">	:help {主题}</span>
+
+例如，要获得 &quot;x&quot; 命令的帮助，输入如下命令：
+
+<span class="Comment">	:help x</span>
+
+要知道如何删除文本，使用如下命令：
+
+<span class="Comment">	:help deleting</span>
+
+要获得所有命令的帮助索引，使用如下命令：
+
+<span class="Comment">	help index</span>
+
+如果你需要获得一个包含控制字符的命令的帮助 (例如 <span class="Special">CTRL-A</span>)，你可以在它前面加上前
+缀 &quot;<span class="Special">CTRL-&quot;</span>。
+
+<span class="Comment">	help CTRL-A</span>
+
+Vim 有很多模式。在默认情况下，帮助系统显示普通模式的命令。例如，如下命令显示
+普通模式的 <span class="Special">CTRL-H</span> 命令的帮助：
+
+<span class="Comment">	:help CTRL-H</span>
+
+要表示其他模式，可以使用模式前缀。如果你需要插入模式的命令帮助，使用 &quot;i_&quot; 前
+缀。例如对于 <span class="Special">CTRL-H</span>，你可以用如下命令：
+
+<span class="Comment">	:help i_CTRL-H</span>
+
+当你启动 Vim，你可以使用一些命令行参数。这些参数以短横线开头 (-)。例如知道要
+-t 这个参数是干什么用的，可以使用这个命令：
+
+<span class="Comment">	:help -t</span>
+
+Vim 有大量的选项让你定制这个编辑器。如果你要获得选项的帮助，你需要把它括在一个
+单引号中。例如，要知道 <span class="Type">'number'</span> 这个选项干什么的，使用如下命令：
+
+<span class="Comment">	:help 'number'</span>
+
+如果你看到一个你不能理解的错误信息，例如：
+
+<span class="Comment">	E37: No write since last change (use ! to override) ~</span>
+
+你可以使用使用E开头的错误号找关于它的帮助：
+
+<span class="Comment">	:help E37</span>
+
+
+小结:		 				<span class="Constant">help-summary</span>
+<span class="Comment">	:help</span>
+		提供非常概括的帮助。往下滚动，可以看到所有帮助文件的列表，包括
+		本地添加的文件 (即不是 Vim 发布带来的)。
+<span class="Comment">	:help user-toc.txt</span>
+		用户手册的内容目录。
+<span class="Comment">	:help :subject</span>
+		Ex-命令 &quot;subject&quot;，例如下例:
+<span class="Comment">	:help :help</span>
+		关于如何得到帮助的帮助。
+<span class="Comment">	:help abc</span>
+		普通模式命令 &quot;abc&quot;。
+<span class="Comment">	:help CTRL-B</span>
+		普通模式下控制键 <span class="Special">&lt;C-B&gt;</span>。
+<span class="Comment">	:help i_abc</span>
+<span class="Comment">	:help i_CTRL-B</span>
+		同上，但在插入模式下。
+<span class="Comment">	:help v_abc</span>
+<span class="Comment">	:help v_CTRL-B</span>
+		同上，但在可视模式下。
+<span class="Comment">	:help c_abc</span>
+<span class="Comment">	:help c_CTRL-B</span>
+		同上，但在命令行模式下。
+<span class="Comment">	:help 'subject'</span>
+		选项 <span class="Type">'subject'</span>。
+<span class="Comment">	:help subject()</span>
+		函数 &quot;subject&quot;。
+<span class="Comment">	:help -subject</span>
+		命令行选项 &quot;-subject&quot;。
+<span class="Comment">	:help +subject</span>
+		编译时特性 &quot;+subject&quot;。
+<span class="Comment">	:help EventName</span>
+		自动命令事件 &quot;EventName&quot;。
+<span class="Comment">	:help digraphs.txt</span>
+		帮助文件 &quot;digraph.txt&quot; 的顶部。
+		其他帮助文件亦同。
+<span class="Comment">	:help pattern&lt;Tab&gt;</span>
+		寻找 &quot;pattern&quot; 开始的一个帮助标签。重复按 <span class="Special">&lt;Tab&gt;</span> 找下一个。
+<span class="Comment">	:help pattern&lt;Ctrl-D&gt;</span>
+		一次性列出所有匹配 &quot;pattern&quot; 的帮助标签。
+<span class="Comment">	:helpgrep pattern</span>
+		在所有帮助文件的全部文本中寻找模式 &quot;pattern&quot;，并跳到第一个匹
+		配。要跳到其它的匹配，可用:
+<span class="Comment">	    :cn</span>
+			下一个匹配
+<span class="Comment">	    :cprev</span>
+<span class="Comment">	    :cN</span>
+			前一个匹配
+<span class="Comment">	    :cfirst</span>
+<span class="Comment">	    :clast</span>
+			第一个或最后一个匹配
+<span class="Comment">	    :copen</span>
+<span class="Comment">	    :cclose</span>
+			打开/关闭 quickfix 窗口；按 <span class="Special">&lt;Enter&gt;</span> 跳转到光标所在的项
+			目上
+
+
+<span class="PreProc">==============================================================================</span>
+
+下一章： <span class="Identifier">usr_03.txt</span>  移动
+
+版权：参见  <span class="Identifier">manual-copyright</span>     vim&#0058;tw=78:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

@@ -1,0 +1,588 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/various.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Todo { color: #000000; background-color: #ffff00; padding-bottom: 1px; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Special { color: #c000c0; }
+.Identifier { color: #008080; }
+.Statement { color: #af5f00; }
+.PreProc { color: #c000c0; }
+.Type { color: #008000; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">various.txt</span>   For <span class="Identifier">Vim version 7.3.</span>  最近更新: 2010年8月
+
+
+		  <span class="Identifier">VIM 参考手册    by Bram Moolenaar</span>
+				<span class="Identifier">译者</span>: Willis
+				<span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>
+
+
+各种其他命令						<span class="Constant">various</span>
+
+1. 其他命令			<span class="Identifier">various-cmds</span>
+2. 用 Vim 代替 less 或 more	<span class="Identifier">less</span>
+
+<span class="PreProc">==============================================================================</span>
+1. 其他命令						<span class="Constant">various-cmds</span>
+
+							<span class="Constant">CTRL-L</span>
+<span class="Special">CTRL-L</span>			清屏并重画屏幕。重画可能稍后发生，在处理完预读入之后。
+
+							<span class="Constant">:redr</span> <span class="Constant">:redraw</span>
+:redr[aw][!]		立即重画屏幕。如果有 !，先清屏。
+			这对在执行脚本或函数的中间要刷新屏幕，或者在置位了
+			<span class="Type">'lazyredraw'</span> 而执行映射的过程中间都有用。
+
+						<span class="Constant">:redraws</span> <span class="Constant">:redrawstatus</span>
+:redraws[tatus][!]	重画当前窗口的状态行。如果有 !，重画所有的状态行。它适
+			用于 <span class="Type">'statusline'</span> 包含有不能自动更新项目的时候。
+
+							<span class="Constant">N&lt;Del&gt;</span>
+<span class="Special">&lt;Del&gt;</span>			输入数字的时候: 删除上一位数字。 <span class="Todo">注意</span>: 如果你想要 <span class="Special">&lt;BS&gt;</span>
+			做同样的事，在 .vimrc 里加入如下的映射:
+<span class="Comment">				:map CTRL-V &lt;BS&gt;   CTRL-V &lt;Del&gt;</span>
+			如果你的 <span class="Special">&lt;Del&gt;</span> 键工作不正常，可参见 <span class="Identifier">:fixdel</span>。
+
+:as[cii]	或					<span class="Constant">ga</span> <span class="Constant">:as</span> <span class="Constant">:ascii</span>
+ga			显示光标下字符的 ascii 值，分别以十进制、十六进制和八
+			进制显示。例如，如果光标下是 'R':
+				<span class="Special">&lt;R&gt;</span>  <span class="PreProc">82,  Hex 52,  Octal 122</span>
+			如果该字符不是标准的 ASCII 字符，但据 <span class="Type">'isprint'</span> 选项可
+			以显示，则另给出不可显示的版本。另外，如果该字符大于
+			127，还显示 <span class="Special">&lt;M-X&gt;</span> 形式的结果。例如:
+				<span class="PreProc">&lt;~A&gt;  &lt;M-^A&gt;  129,  Hex 81,  Octal 201</span>
+				<span class="Special">&lt;p&gt;</span>  <span class="PreProc">&lt;|~&gt;  &lt;M-~&gt;  254,  Hex fe,  Octal 376</span>
+			(其中的 <span class="Special">&lt;p&gt;</span> 是某个特殊字符)
+			文件里的 <span class="Special">&lt;Nul&gt;</span> 字符内部以 <span class="Special">&lt;NL&gt;</span> 存储，但显示为:
+				<span class="PreProc">&lt;^@&gt;  0,  Hex 00,  Octal 000</span>
+			如果字符有合成用字符，同时显示它们。<span class="Type">'maxcombine'</span> 的值
+			这时不起作用。
+			助记: 得到 (Get) Ascii 值。<span class="Special">{Vi 无此功能}</span>
+
+							<span class="Constant">g8</span>
+g8			显示光标下字符 (假定其为 <span class="Identifier">UTF-8</span> 编码) 的各字节的十六
+			进制值。它会同时显示合成用字符。<span class="Type">'maxcombine'</span> 的值这时
+			不起作用。
+			一个带三个合成用字符的字符示例:
+				<span class="PreProc">e0 b8 81 + e0 b8 b9 + e0 b9 89</span>
+			<span class="Special">{Vi 无此功能}</span> <span class="Special">{仅当编译时加入 </span><span class="Identifier">+multi_byte</span><span class="Special"> 特性才有</span>
+			<span class="Special">效}</span>
+
+							<span class="Constant">8g8</span>
+8g8			寻找光标所在或之后的非法 UTF-8 字节序列。两种情形下这
+			可以工作:
+			1. 如果 <span class="Type">'encoding'</span> 是任何 8 位编码
+			2. 如果 <span class="Type">'encoding'</span> 是 &quot;utf-8&quot; 而 <span class="Type">'fileencoding'</span> 是任何
+			   8 位编码
+			所以它可以用来编辑本来应该是 UTF-8 但因为包含了非法字
+			节而读入时被当作 8 位编码的文件。
+			文件尾不回绕。
+			<span class="Todo">注意</span> 如果光标在非法字节上或者光标在多字节字符的中间，
+			此命令不移动光标。
+			<span class="Special">{Vi 无此功能}</span> <span class="Special">{仅当编译时加入 </span><span class="Identifier">+multi_byte</span><span class="Special"> 特性才有</span>
+			<span class="Special">效}</span>
+
+						<span class="Constant">:p</span> <span class="Constant">:pr</span> <span class="Constant">:print</span> <span class="Constant">E749</span>
+:<span class="Special">[range]</span>p[rint][flags]
+			显示 <span class="Special">[range]</span> 范围里的行 (缺省是当前行)。
+			<span class="Todo">注意</span>: 如果你要打印你的文本到纸张上，见 <span class="Identifier">:hardcopy</span>。
+			GUI 上可以使用 File.Print 菜单项。
+			<span class="Identifier">ex-flags</span> 说明 <span class="Special">[flags]</span>。
+
+:<span class="Special">[range]</span>p[rint] <span class="Special">{count}</span> <span class="Special">[flags]</span>
+			显示 <span class="Special">{count}</span> 行，从 <span class="Special">[range]</span> 指定的范围开始 (缺省是当前
+			行 <span class="Identifier">cmdline-ranges</span>)。
+			<span class="Identifier">ex-flags</span> 说明 <span class="Special">[flags]</span>。
+
+							<span class="Constant">:P</span> <span class="Constant">:Print</span>
+:<span class="Special">[range]</span>P[rint] <span class="Special">[count]</span> <span class="Special">[flags]</span>
+			和 &quot;:print&quot; 相同。Vi 里加入这个功能，很明显地，是给那
+			些按 Shift 键太久的人用的 ...
+			<span class="Identifier">ex-flags</span> 说明 <span class="Special">[flags]</span>。
+
+							<span class="Constant">:l</span> <span class="Constant">:list</span>
+:<span class="Special">[range]</span>l[ist] <span class="Special">[count]</span> <span class="Special">[flags]</span>
+			和 :print 相同，但是不可显示字符用 '^' 代替，行尾加上
+			$。这可用 <span class="Type">'listchars'</span> 选项改变。
+			<span class="Identifier">ex-flags</span> 说明 <span class="Special">[flags]</span>。
+
+							<span class="Constant">:nu</span> <span class="Constant">:number</span>
+:<span class="Special">[range]</span>nu[mber] <span class="Special">[count]</span> <span class="Special">[flags]</span>
+			和 :print 相同，但每行之前显示行号 (也参见 <span class="Type">'highlight'</span>
+			和 <span class="Type">'numberwidth'</span> 选项)。
+			<span class="Identifier">ex-flags</span> 说明 <span class="Special">[flags]</span>。
+
+							<span class="Constant">:#</span>
+:<span class="Special">[range]</span># <span class="Special">[count]</span> <span class="Special">[flags]</span>
+			和 :number 相同。
+
+							<span class="Constant">:#!</span>
+:#!<span class="Special">{anything}</span>		忽略，从而你可以用下面的方式开始 Vim 脚本:
+<span class="Comment">				#!vim -S</span>
+<span class="Comment">				echo &quot;this is a Vim script&quot;</span>
+<span class="Comment">				quit</span>
+
+							<span class="Constant">:z</span> <span class="Constant">E144</span>
+:<span class="Special">{range}</span>z[+-^.=]<span class="Special">{count}</span>	显示包围 <span class="Special">{range}</span> 指定行的若干行文本，如果没有 <span class="Special">{range}</span>,
+			这显示当前行上下的文本。如果有 <span class="Special">{count}</span>，它指定你能看到
+			的行数。否则，如果只有一个窗口，使用 <span class="Type">'window'</span> 选项。不
+			然，使用当前的窗口大小。
+
+			:z 可以单独使用，也可以后跟数个标点符号中的一个。他们
+			有如下的效果:
+
+			<span class="PreProc">标记   首行          末行           新位置     </span>
+			----   ----------    ---------      ------------
+			+      当前行  	     向前 1 屏      向前 1 屏
+			-      向后 1 屏     当前行         当前行
+			^      向后 2 屏     向后 1 屏      向后 1 屏
+			.      向后 1/2 屏   向前 1/2 屏    向前 1/2 屏
+			=      向后 1/2 屏   向前 1/2 屏    当前行
+
+			不指定任何标记相当于指定 &quot;+&quot;。如果标记是 &quot;=&quot;，当前行会
+			被连字符组成的两行包围。
+
+:<span class="Special">{range}</span>z#[+-^.=]<span class="Special">{count}</span>				<span class="Constant">:z#</span>
+			和 &quot;:z&quot; 类似，但显示行号。
+			<span class="Special">{Vi 并非所有版本都有此功能和所有这些参数}</span>
+
+							<span class="Constant">:=</span>
+:= <span class="Special">[flags]</span>		显示末行的行号。
+			<span class="Identifier">ex-flags</span> 说明 <span class="Special">[flags]</span>。
+
+:<span class="Special">{range}</span>= <span class="Special">[flags]</span>	显示 <span class="Special">{range}</span> 范围内最后一行的行号。例如，打印当前行
+			号:
+<span class="Comment">				:.=</span>
+			<span class="Identifier">ex-flags</span> 说明 <span class="Special">[flags]</span>。
+
+:norm[al][!] <span class="Special">{commands}</span>					<span class="Constant">:norm</span> <span class="Constant">:normal</span>
+			执行若干普通模式命令 <span class="Special">{commands}</span>。这使得在命令行上执行
+			普通模式命令成为可能。<span class="Special">{commands}</span> 的执行就像从键盘输入
+			那样。撤销命令会撤销所有的命令。
+			如果发生错误，结束执行。
+			如果给出 [!]，不使用映射。
+			<span class="Special">{commands}</span> 必须是完整的命令。如果 <span class="Special">{commands}</span> 没有完整
+			给出一个命令，未完成的最后那个命令会被终止，如同键入了
+			<span class="Special">&lt;Esc&gt;</span> 或 <span class="Special">&lt;C-C&gt;</span> 一样。&quot;:normal&quot; 还在工作的时候，显示不
+			会被刷新。这意味着插入命令也必须完整 (要开始插入模式，
+			见 <span class="Identifier">:startinsert</span>)。&quot;:&quot; 命令也必须完整。而且你不能用
+			&quot;Q&quot; 或 &quot;gQ&quot; 启动 Ex 模式。
+			<span class="Special">{commands}</span> 不能以空格开始，如果要，前面加个计数 1
+			(一)。&quot;1 &quot; 就是一个空格。
+			<span class="Special">{commands}</span> 里忽略 <span class="Type">'insertmode'</span> 选项。
+			该命令后面不能跟其他命令。因为任何 '|' 都被认为是命令
+			的一部分。
+			该命令可以递归使用，但是深度不能超过 <span class="Type">'maxmapdepth'</span>。
+			如果一个不可重新映射的映射 <span class="Identifier">:noremap</span> 调用该命令，它的
+			参数就因而还是有可能被重新映射。
+			一个替代的方法是 <span class="Identifier">:execute</span>，它可以用表达式作为参数。
+			这样就可使用可显示字符来代表特殊字符。
+			例如:
+<span class="Comment">				:exe &quot;normal \&lt;c-w&gt;\&lt;c-w&gt;&quot;</span>
+			<span class="Special">{Vi 当然无此功能}</span>
+			<span class="Special">{仅当编译时加入 </span><span class="Identifier">+ex_extra</span><span class="Special"> 特性才可用}</span>
+
+:<span class="Special">{range}</span>norm[al][!] <span class="Special">{commands}</span>				<span class="Constant">:normal-range</span>
+			在 <span class="Special">{range}</span> 指定的范围中的每行执行若干普通模式命令
+			<span class="Special">{commands}</span>。在执行 <span class="Special">{commands}</span> 之前，光标先定位在该行的
+			的第一列。除此以外，和没有给出范围的 &quot;:normal&quot; 命令并
+			无差别。
+			<span class="Special">{Vi 无此功能}</span>
+			<span class="Special">{仅当编译时加入 </span><span class="Identifier">+ex_extra</span><span class="Special"> 特性才可用}</span>
+
+							<span class="Constant">:sh</span> <span class="Constant">:shell</span> <span class="Constant">E371</span>
+:sh[ell]		该命令启动一个外壳。外壳退出后 (执行完 &quot;exit&quot; 命令)，
+			你会回到 Vim。外壳命令的名字来自 <span class="Type">'shell'</span> 选项。
+							<span class="Constant">E360</span>
+			<span class="Todo">注意</span>: 当 Vim 在 Amiga 上通过编译器的 QuickFix 模式时启
+			动时，该命令不能使用。这是因为编译器把标准输入设为非交
+			互模式。
+
+							<span class="Constant">:!cmd</span> <span class="Constant">:!</span> <span class="Constant">E34</span>
+:!<span class="Special">{cmd}</span>			在外壳里执行 <span class="Special">{cmd}</span> 命令。也可参见 <span class="Type">'shell'</span> 和
+			<span class="Type">'shelltype'</span> 选项。
+			<span class="Special">{cmd}</span> 里的任何 '!' 都被前一个外部命令所取代 (参见
+			<span class="Type">'cpoptions'</span>)，除非之前有反斜杠。这时反斜杠被去掉。例
+			如: &quot;!ls&quot; 之后的 &quot;!echo ! \! \\!&quot; 实际执行
+			&quot;echo ls ! \!&quot;。
+			命令执行之后，检查当前文件的修改时间 <span class="Identifier">timestamp</span>。
+			<span class="Special">{cmd}</span> 里的 '|' 会传给外壳，你不能用来附加 Vim 命令。
+			见 <span class="Identifier">:bar</span>。
+			<span class="Special">{cmd}</span> 以换行符结尾，其后的内容被理解为另外一个 &quot;:&quot; 命
+			令。不过，如果换行之前有反斜杠，该反斜杠被去掉，<span class="Special">{cmd}</span>
+			继续接受参数。无论之前有多少个反斜杠都是如此。只有一个
+			会被去掉。
+			Unix 上命令通常在非交互的外壳里运行。如果你希望用交互
+			外壳 (比如要用别名机制 aliases)，设置 <span class="Type">'shellcmdflags'</span>
+			为 &quot;-ic&quot;。Win32 上可参见 <span class="Identifier">:!start</span>。
+			Vim 在命令结束以后重画屏幕，因为命令可能显示任何文本。
+			因此，你会有一个按回车的提示，以便你看到执行结果。要避
+			免这一点:
+<span class="Comment">				:silent !{cmd}</span>
+			这样屏幕就不会重画。如果确实有输出，你需要用 <span class="Special">CTRL-L</span> 或
+			&quot;:redraw!&quot; 来刷新。
+			参见 <span class="Identifier">shell-window</span>。
+
+							<span class="Constant">:!!</span>
+:!!			重复上次的 &quot;:!<span class="Special">{cmd}</span>&quot;。
+
+							<span class="Constant">:ve</span> <span class="Constant">:version</span>
+:ve[rsion]		显示编辑器的版本号。如果编译器能解释 &quot;__DATE__&quot;，也显
+			示编译的日期。不然，显示固定的发布日期。
+			然后，显示 Vim 编译时所带特性的信息。如果某特性之前有
+			'+'，该特性被包含。如果之前有 '-'，该特性没有包含。要
+			改变编译时带的特性，修改 feature.h 并重新编译 Vim。
+			要在表达式里确定是否包含某特性，参见 <span class="Identifier">has()</span>。
+			以下是特性的总览。
+			第一列显示包含该特性的最小版本。
+			   T	tiny (微小)
+			   S	small (小)
+			   <span class="Special">N</span>	normal (普通)
+			   B	big (大)
+			   H	huge (巨大)
+			   m	手动设定或者依赖于其他特性
+			 (无)	依赖于系统
+			这样，如果一个特性标记为 &quot;<span class="Special">N</span>&quot;，它包含在 Vim 的 normal、
+			big 和 huge 版本里。
+
+							<span class="Constant">+feature-list</span>
+<span class="Statement">   </span><span class="Constant">+ARP</span>		仅对 Amiga 有效: 支持 ARP
+<span class="Statement">B  </span><span class="Constant">+arabic</span>		支持阿拉伯语 <span class="Identifier">Arabic</span>
+<span class="Statement">N  </span><span class="Constant">+autocmd</span>		<span class="Identifier">:autocmd</span>，自动命令
+m  <span class="Constant">+balloon_eval</span>	气泡表达式支持 <span class="Identifier">balloon-eval</span>。如果编译时包含支持的
+			GUI (Motif、GTK、GUI) 同时还有 Netbeans/Sun Workshop
+			集成或者 <span class="Identifier">+eval</span> 特性之一就包含此特性。
+<span class="Statement">N  </span><span class="Constant">+browse</span>		<span class="Identifier">:browse</span> 命令
+<span class="Statement">N  </span><span class="Constant">+builtin_terms</span>	一些内建终端项 <span class="Identifier">builtin-terms</span>
+<span class="Statement">B  </span><span class="Constant">++builtin_terms</span>	最大内建终端项支持 <span class="Identifier">builtin-terms</span>
+<span class="Statement">N  </span><span class="Constant">+byte_offset</span>	支持 <span class="Type">'statusline'</span> 选项的 'o' 标志位、&quot;go&quot; 和 &quot;:goto&quot;
+			命令。
+<span class="Statement">N  </span><span class="Constant">+cindent</span>		<span class="Identifier">'cindent'</span>，C 缩进
+<span class="Statement">N  </span><span class="Constant">+clientserver</span>	Unix 和 Win32: 远程调用 <span class="Identifier">clientserver</span>
+<span class="Statement">   </span><span class="Constant">+clipboard</span>		剪贴板支持 <span class="Identifier">clipboard</span>
+<span class="Statement">N  </span><span class="Constant">+cmdline_compl</span>	命令行补全 <span class="Identifier">cmdline-completion</span>
+<span class="Statement">N  </span><span class="Constant">+cmdline_hist</span>	命令行历史 <span class="Identifier">cmdline-history</span>
+<span class="Statement">N  </span><span class="Constant">+cmdline_info</span>	<span class="Identifier">'showcmd'</span> 和 <span class="Identifier">'ruler'</span>
+<span class="Statement">N  </span><span class="Constant">+comments</span>		支持 <span class="Identifier">'comments'</span>
+<span class="Statement">B  </span><span class="Constant">+conceal</span>		&quot;conceal&quot; 支持，见 <span class="Identifier">conceal</span> <span class="Identifier">:syn-conceal</span> 等。
+<span class="Statement">N  </span><span class="Constant">+cryptv</span>		加密支持 <span class="Identifier">encryption</span>
+<span class="Statement">B  </span><span class="Constant">+cscope</span>		支持 <span class="Identifier">cscope</span>
+m  <span class="Constant">+cursorbind</span>	<span class="Identifier">'cursorbind'</span> 支持
+m  <span class="Constant">+cursorshape</span>	<span class="Identifier">termcap-cursor-shape</span> 支持
+m  <span class="Constant">+debug</span>		带调试的编译。
+<span class="Statement">N  </span><span class="Constant">+dialog_gui</span>	支持 <span class="Identifier">:confirm</span> 显示 GUI 对话框。
+<span class="Statement">N  </span><span class="Constant">+dialog_con</span>	支持 <span class="Identifier">:confirm</span> 显示控制台对话框。
+<span class="Statement">N  </span><span class="Constant">+dialog_con_gui</span>	支持 <span class="Identifier">:confirm</span> 显示 GUI 或控制台对话框。
+<span class="Statement">N  </span><span class="Constant">+diff</span>		<span class="Identifier">vimdiff</span> 和 <span class="Type">'diff'</span>
+<span class="Statement">N  </span><span class="Constant">+digraphs</span>		<span class="Identifier">digraphs</span> <span class="Constant">E196</span>
+<span class="Statement">   </span><span class="Constant">+dnd</span>		&quot;~ 寄存器的拖放支持 <span class="Identifier">quote_~</span>。
+<span class="Statement">B  </span><span class="Constant">+emacs_tags</span>	<span class="Identifier">emacs-tags</span> 文件
+<span class="Statement">N  </span><span class="Constant">+eval</span>		表达式计算 <span class="Identifier">eval.txt</span>
+<span class="Statement">N  </span><span class="Constant">+ex_extra</span>		Vim 附加的 Ex 命令: <span class="Identifier">:center</span>、<span class="Identifier">:left</span>、<span class="Identifier">:normal</span>、
+			<span class="Identifier">:retab</span> 和 <span class="Identifier">:right</span>
+<span class="Statement">N  </span><span class="Constant">+extra_search</span>	<span class="Identifier">'hlsearch'</span> 和 <span class="Identifier">'incsearch'</span> 选项。
+<span class="Statement">B  </span><span class="Constant">+farsi</span>		<span class="Identifier">farsi</span> 波斯语言
+<span class="Statement">N  </span><span class="Constant">+file_in_path</span>	<span class="Identifier">gf</span>、<span class="Identifier">CTRL-W_f</span> 和 <span class="Identifier">&lt;cfile&gt;</span>
+<span class="Statement">N  </span><span class="Constant">+find_in_path</span>	包含文件搜索: <span class="Identifier">[I</span>、<span class="Identifier">:isearch</span>、<span class="Identifier">CTRL-W_CTRL-I</span>、
+			<span class="Identifier">:checkpath</span>，等等。
+<span class="Statement">N  </span><span class="Constant">+folding</span>		折叠 <span class="Identifier">folding</span>
+<span class="Statement">   </span><span class="Constant">+footer</span>		信息页脚 <span class="Identifier">gui-footer</span>
+<span class="Statement">   </span><span class="Constant">+fork</span>		只对 Unix 有效: <span class="Identifier">fork</span> 外壳命令
+<span class="Statement">   </span><span class="Constant">+float</span>		浮点数支持
+<span class="Statement">N  </span><span class="Constant">+gettext</span>		消息翻译 <span class="Identifier">multi-lang</span>
+<span class="Statement">   </span><span class="Constant">+GUI_Athena</span>	只对 Unix 有效: Athena <span class="Identifier">GUI</span>
+<span class="Statement">   </span><span class="Constant">+GUI_neXtaw</span>	只对 Unix 有效: neXtaw <span class="Identifier">GUI</span>
+<span class="Statement">   </span><span class="Constant">+GUI_GTK</span>		只对 Unix 有效: GTK+ <span class="Identifier">GUI</span>
+<span class="Statement">   </span><span class="Constant">+GUI_Motif</span>		只对 Unix 有效: Motif <span class="Identifier">GUI</span>
+<span class="Statement">   </span><span class="Constant">+GUI_Photon</span>	只对 QNX 有效:  Photon <span class="Identifier">GUI</span>
+m  <span class="Constant">+hangul_input</span>	韩语 (Hangul) 输入支持 <span class="Identifier">hangul</span>
+<span class="Statement">   </span><span class="Constant">+iconv</span>		编译时有 <span class="Identifier">iconv()</span> 函数
+<span class="Statement">   </span><span class="Constant">+iconv/dyn</span>		类似 <span class="Identifier">iconv-dynamic</span> <span class="Identifier">/dyn</span>
+<span class="Statement">N  </span><span class="Constant">+insert_expand</span>	<span class="Identifier">insert_expand</span> 插入模式补全
+<span class="Statement">N  </span><span class="Constant">+jumplist</span>		跳转表 <span class="Identifier">jumplist</span>
+<span class="Statement">B  </span><span class="Constant">+keymap</span>		键盘映射表 <span class="Identifier">'keymap'</span>
+<span class="Statement">B  </span><span class="Constant">+langmap</span>		语言映射表 <span class="Identifier">'langmap'</span>
+<span class="Statement">N  </span><span class="Constant">+libcall</span>		函数库调用 <span class="Identifier">libcall()</span>
+<span class="Statement">N  </span><span class="Constant">+linebreak</span>		<span class="Identifier">'linebreak'</span>、<span class="Identifier">'breakat'</span> 和 <span class="Identifier">'showbreak'</span>
+<span class="Statement">N  </span><span class="Constant">+lispindent</span>	<span class="Identifier">'lisp'</span>
+<span class="Statement">N  </span><span class="Constant">+listcmds</span>		Vim 的缓冲区列表相关命令 <span class="Identifier">buffer-hidden</span> 和参数列表
+			<span class="Identifier">:argdelete</span>
+<span class="Statement">N  </span><span class="Constant">+localmap</span>		支持缓冲区的局部映射 <span class="Identifier">:map-local</span>
+m  <span class="Constant">+lua</span>		<span class="Identifier">Lua</span> 接口
+m  <span class="Constant">+lua/dyn</span>		<span class="Identifier">Lua</span> 接口 <span class="Identifier">/dyn</span>
+<span class="Statement">N  </span><span class="Constant">+menu</span>		菜单 <span class="Identifier">:menu</span>
+<span class="Statement">N  </span><span class="Constant">+mksession</span>		创建会话 <span class="Identifier">:mksession</span>
+<span class="Statement">N  </span><span class="Constant">+modify_fname</span>	文件名修饰符 <span class="Identifier">filename-modifiers</span>
+<span class="Statement">N  </span><span class="Constant">+mouse</span>		鼠标处理 <span class="Identifier">mouse-using</span>
+<span class="Statement">N  </span><span class="Constant">+mouseshape</span>	鼠标形状 <span class="Identifier">'mouseshape'</span>
+<span class="Statement">B  </span><span class="Constant">+mouse_dec</span>		只对 Unix 有效: Dec 终端鼠标处理 <span class="Identifier">dec-mouse</span>
+<span class="Statement">N  </span><span class="Constant">+mouse_gpm</span>		只对 Unix 有效: Linux 终端鼠标处理 <span class="Identifier">gpm-mouse</span>
+<span class="Statement">B  </span><span class="Constant">+mouse_netterm</span>	只对 Unix 有效: netterm 终端鼠标处理 <span class="Identifier">netterm-mouse</span>
+<span class="Statement">N  </span><span class="Constant">+mouse_pterm</span>	只对 QNX 有效: pterm 终端鼠标处理 <span class="Identifier">qnx-terminal</span>
+<span class="Statement">N  </span><span class="Constant">+mouse_sysmouse</span>	只对 Unix 有效: *BSD 控制台鼠标处理 <span class="Identifier">sysmouse</span>
+<span class="Statement">N  </span><span class="Constant">+mouse_xterm</span>	只对 Unix 有效: xterm 终端鼠标处理 <span class="Identifier">xterm-mouse</span>
+<span class="Statement">B  </span><span class="Constant">+multi_byte</span>	16 和 32 位字符 <span class="Identifier">multibyte</span>
+<span class="Statement">   </span><span class="Constant">+multi_byte_ime</span>	Win32 多字节字符的输入法 <span class="Identifier">multibyte-ime</span>
+<span class="Statement">N  </span><span class="Constant">+multi_lang</span>	非英语语言支持 <span class="Identifier">multi-lang</span>
+m  <span class="Constant">+mzscheme</span>		Mzscheme 接口 <span class="Identifier">mzscheme</span>
+m  <span class="Constant">+mzscheme/dyn</span>	Mzscheme 接口 <span class="Identifier">mzscheme-dynamic</span> <span class="Identifier">/dyn</span>
+m  <span class="Constant">+netbeans_intg</span>	<span class="Identifier">netbeans</span>
+m  <span class="Constant">+ole</span>		只对 Win32 GUI 有效: <span class="Identifier">ole-interface</span>
+<span class="Statement">   </span><span class="Constant">+osfiletype</span>	支持 <span class="Type">'osfiletype'</span> 选项和自动命令的文件类型检查。
+			<span class="Identifier">autocmd-osfiletypes</span>
+<span class="Statement">N  </span><span class="Constant">+path_extra</span>	<span class="Type">'path'</span> 和 <span class="Type">'tags'</span> 的向上和向下搜索
+m  <span class="Constant">+perl</span>		Perl 接口 <span class="Identifier">perl</span>
+m  <span class="Constant">+perl/dyn</span>		Perl 接口 <span class="Identifier">perl-dynamic</span> <span class="Identifier">/dyn</span>
+<span class="Statement">N  </span><span class="Constant">+persistent_undo</span>	撤销的永久保存 <span class="Identifier">undo-persistence</span>
+<span class="Statement">   </span><span class="Constant">+postscript</span>	<span class="Identifier">:hardcopy</span> 可以写 PostScript 文件
+<span class="Statement">N  </span><span class="Constant">+printer</span>		<span class="Identifier">:hardcopy</span> 命令
+<span class="Statement">H  </span><span class="Constant">+profile</span>		<span class="Identifier">:profile</span> 命令
+m  <span class="Constant">+python</span>		Python 2 接口 <span class="Identifier">python</span>
+m  <span class="Constant">+python/dyn</span>	Python 2 接口 <span class="Identifier">python-dynamic</span> <span class="Identifier">/dyn</span>
+m  <span class="Constant">+python3</span>		Python 3 接口 <span class="Identifier">python</span>
+m  <span class="Constant">+python3/dyn</span>	Python 3 接口 <span class="Identifier">python-dynamic</span> <span class="Identifier">/dyn</span>
+<span class="Statement">N  </span><span class="Constant">+quickfix</span>		<span class="Identifier">:make</span> 和 <span class="Identifier">quickfix</span> 命令
+<span class="Statement">N  </span><span class="Constant">+reltime</span>		<span class="Identifier">reltime()</span> 函数，<span class="Type">'hlsearch'</span>/<span class="Type">'incsearch'</span> 超时，
+			<span class="Type">'redrawtime'</span> 选项
+<span class="Statement">B  </span><span class="Constant">+rightleft</span>		从右到左输入 <span class="Identifier">'rightleft'</span>
+m  <span class="Constant">+ruby</span>		Ruby 接口 <span class="Identifier">ruby</span>
+m  <span class="Constant">+ruby/dyn</span>		Ruby 接口 <span class="Identifier">ruby-dynamic</span> <span class="Identifier">/dyn</span>
+<span class="Statement">N  </span><span class="Constant">+scrollbind</span>	滚动绑定 <span class="Identifier">'scrollbind'</span>
+<span class="Statement">B  </span><span class="Constant">+signs</span>		标号 <span class="Identifier">:sign</span>
+<span class="Statement">N  </span><span class="Constant">+smartindent</span>	<span class="Identifier">'smartindent'</span>
+m  <span class="Constant">+sniff</span>		SniFF 接口 <span class="Identifier">sniff</span>
+<span class="Statement">N  </span><span class="Constant">+startuptime</span>	<span class="Identifier">--startuptime</span> 参数
+<span class="Statement">N  </span><span class="Constant">+statusline</span>	<span class="Type">'statusline'</span>、<span class="Type">'rulerformat'</span> 选项和 <span class="Type">'titlestring'</span> 和
+			<span class="Type">'iconstring'</span> 的特殊格式
+m  <span class="Constant">+sun_workshop</span>	<span class="Identifier">workshop</span>
+<span class="Statement">N  </span><span class="Constant">+syntax</span>		语法高亮 <span class="Identifier">syntax</span>
+<span class="Statement">   </span><span class="Constant">+system()</span>		只对 Unix 有效: <span class="Identifier">+fork</span> 的相反特性
+<span class="Statement">N  </span><span class="Constant">+tag_binary</span>	标签文件的二分查找 <span class="Identifier">tag-binary-search</span>
+<span class="Statement">N  </span><span class="Constant">+tag_old_static</span>	支持静态标签的旧方法 <span class="Identifier">tag-old-static</span>
+m  <span class="Constant">+tag_any_white</span>	标签文件里允许空白 <span class="Identifier">tag-any-white</span>
+m  <span class="Constant">+tcl</span>		Tcl 接口 <span class="Identifier">tcl</span>
+m  <span class="Constant">+tcl/dyn</span>		Tcl 接口 <span class="Identifier">tcl-dynamic</span> <span class="Identifier">/dyn</span>
+<span class="Statement">   </span><span class="Constant">+terminfo</span>		用 <span class="Identifier">terminfo</span> 代替 termcap
+<span class="Statement">N  </span><span class="Constant">+termresponse</span>	支持 <span class="Identifier">t_RV</span> 和 <span class="Identifier">v:termresponse</span>
+<span class="Statement">N  </span><span class="Constant">+textobjects</span>	文本对象 <span class="Identifier">text-objects</span> 选择
+<span class="Statement">   </span><span class="Constant">+tgetent</span>		只对非 Unix 有效: 可以使用外部 termcap
+<span class="Statement">N  </span><span class="Constant">+title</span>		设置窗口 <span class="Identifier">'title'</span>和 <span class="Type">'icon'</span>
+<span class="Statement">N  </span><span class="Constant">+toolbar</span>		GUI 工具栏 <span class="Identifier">gui-toolbar</span>
+<span class="Statement">N  </span><span class="Constant">+user_commands</span>	用户定义命令。<span class="Identifier">user-commands</span>
+<span class="Statement">N  </span><span class="Constant">+viminfo</span>		<span class="Identifier">'viminfo'</span>
+<span class="Statement">N  </span><span class="Constant">+vertsplit</span>		垂直分割窗口 <span class="Identifier">:vsplit</span>
+<span class="Statement">N  </span><span class="Constant">+virtualedit</span>	<span class="Identifier">'virtualedit'</span>
+<span class="Statement">S  </span><span class="Constant">+visual</span>		可视模式 <span class="Identifier">Visual-mode</span>
+<span class="Statement">N  </span><span class="Constant">+visualextra</span>	额外的可视模式命令 <span class="Identifier">blockwise-operators</span>
+<span class="Statement">N  </span><span class="Constant">+vreplace</span>		<span class="Identifier">gR</span> 和 <span class="Identifier">gr</span>
+<span class="Statement">N  </span><span class="Constant">+wildignore</span>	忽略文件通配 <span class="Identifier">'wildignore'</span>
+<span class="Statement">N  </span><span class="Constant">+wildmenu</span>		匹配菜单 <span class="Identifier">'wildmenu'</span>
+<span class="Statement">S  </span><span class="Constant">+windows</span>		多于一个窗口
+m  <span class="Constant">+writebackup</span>	<span class="Identifier">'writebackup'</span> 缺省打开
+m  <span class="Constant">+xim</span>		X 输入法 <span class="Identifier">xim</span>
+<span class="Statement">   </span><span class="Constant">+xfontset</span>		X 字体集支持 <span class="Identifier">xfontset</span>
+<span class="Statement">   </span><span class="Constant">+xsmp</span>		XSMP (X 会话管理) 支持
+<span class="Statement">   </span><span class="Constant">+xsmp_interact</span>	交互 XSMP (X 会话管理) 支持
+<span class="Statement">N  </span><span class="Constant">+xterm_clipboard</span>	只对 Unix 有效: xterm 剪贴板处理
+m  <span class="Constant">+xterm_save</span>	保存和恢复 xterm 屏幕 <span class="Identifier">xterm-screens</span>
+<span class="Statement">N  </span><span class="Constant">+X11</span>		只对 Unix 有效: 可以恢复窗口标题 <span class="Identifier">X11</span>
+
+							<span class="Constant">/dyn</span> <span class="Constant">E370</span> <span class="Constant">E448</span>
+			有些特性可能会显示 &quot;/dyn&quot;，表明该特性只有在动态调入相
+			关库时才可用。
+
+:ve[rsion] <span class="Special">{nr}</span>		现在已被忽略。以前用来检查 .vimrc 文件的版本号。现在取
+			消的原因是因为你可以用 &quot;:if&quot; 命令区别不同版本的不同行
+			为。<span class="Special">{Vi 无此功能}</span>
+
+							<span class="Constant">:redi</span> <span class="Constant">:redir</span>
+:redi[r][!] &gt; <span class="Special">{file}</span>	重定向消息到文件 <span class="Special">{file}</span>。将命令的输出消息写到该文件，
+			直到重定向结束。消息也同时显示在屏幕上。如果有 [!]，覆
+			盖已存在的文件。如果没有但文件 <span class="Special">{file}</span> 存在，该命令会失
+			败。
+			一次只能激活一个 &quot;:redir&quot;。也就是，调用 &quot;:redir&quot; 开始
+			重定向到新的目标之前，任何已激活的重定向都会被关闭。
+			如果不想在屏幕上显示消息或者命令的回显，在函数里调用命
+			令，以 &quot;:silent call Function()&quot; 方式调用该函数。
+			一个替代方案是使用 <span class="Type">'verbosefile'</span> 选项，它也可以和
+			&quot;:redir&quot; 组合使用。
+			<span class="Special">{Vi 无此功能}</span>
+
+:redi[r] &gt;&gt; <span class="Special">{file}</span>	重定向消息到文件 <span class="Special">{file}</span>，如果文件 <span class="Special">{file}</span> 已存在，附加
+			在其后。<span class="Special">{Vi 无此功能}</span>
+
+:redi[r] @<span class="Special">{a-zA-Z}</span>
+:redi[r] @<span class="Special">{a-zA-Z}</span>&gt;	重定向消息到寄存器 <span class="Special">{a-z}</span>。如果给出的名字是大写 <span class="Special">{A-Z}</span>，
+			附加到已有内容之后。寄存器名后的 '&gt;' 可选。
+			<span class="Special">{Vi 无此功能}</span>
+:redi[r] @<span class="Special">{a-z}</span>&gt;&gt;	附加消息到寄存器 <span class="Special">{a-z}</span>。<span class="Special">{Vi 无此功能}</span>
+
+:redi[r] @*&gt;
+:redi[r] @+&gt;		重定向消息到选择区或剪贴板。为了后向兼容，寄存器名后的
+			'&gt;' 可以省略。见 <span class="Identifier">quotestar</span> 和 <span class="Identifier">quoteplus</span>。
+			<span class="Special">{Vi 无此功能}</span>
+:redi[r] @*&gt;&gt;
+:redi[r] @+&gt;&gt;		附加消息到选择区或剪贴板。<span class="Special">{Vi 无此功能}</span>
+
+:redi[r] @&quot;&gt;		重定向消息到无名寄存器。为了后向兼容，寄存器名后的 '&gt;'
+			可以省略。<span class="Special">{Vi 无此功能}</span>
+:redi[r] @&quot;&gt;&gt;		附加消息到无名寄存器。<span class="Special">{Vi 无此功能}</span>
+
+:redi[r] =&gt; <span class="Special">{var}</span>	重定向消息到变量。如果变量不存在，建立之。如果变量已经
+			存在，它被初始化为空字符串，而且保持为空，直到重定向结
+			束为止。只能使用字符串变量。重定向开始后，如果变量被删
+			除或加锁或类型被改变，那么将来的命令输出消息会报错。
+			<span class="Special">{Vi 无此功能}</span>
+
+:redi[r] =&gt;&gt; <span class="Special">{var}</span>	附加消息到已有的变量。只能使用字符串变量。
+			<span class="Special">{Vi 无此功能}</span>
+
+:redi[r] END		结束消息的重定向。<span class="Special">{Vi 无此功能}</span>
+
+						<span class="Constant">:sil</span> <span class="Constant">:silent</span>
+:sil[ent][!] <span class="Special">{command}</span>	安静地执行命令 <span class="Special">{command}</span>。不显示正常的消息，也不会把它
+			加进消息历史。
+			如果有 [!]，同时跳过错误消息，检测到错误时，命令和映射
+			也也不会被终止。但还是会相应设置 <span class="Identifier">v:errmsg</span>。
+			如果没有 [!]，错误信息会使得其后的所有消息都被正常显
+			示。
+			<span class="Identifier">:redir</span> 开始的重定向会继续工作，但可能有些细微差异。
+			命令输出仍然重定向，但屏幕上看不到。例如:
+<span class="Comment">			    :redir &gt;/tmp/foobar</span>
+<span class="Comment">			    :silent g/Aap/p</span>
+<span class="Comment">			    :redir END</span>
+			要安静地执行普通模式命令，用 <span class="Identifier">:normal</span> 命令。例如，要
+			搜索字符串且不给出任何消息:
+<span class="Comment">			    :silent exe &quot;normal /path\&lt;CR&gt;&quot;</span>
+			&quot;:silent!&quot; 可以用来执行命令，不管该命令是否失败都继续
+			执行。
+			例如:
+<span class="Comment">			    :let v:errmsg = &quot;&quot;</span>
+<span class="Comment">			    :silent! /^begin</span>
+<span class="Comment">			    :if v:errmsg != &quot;&quot;</span>
+<span class="Comment">			    : ... 模式没找到</span>
+			&quot;:silent&quot; 还可以避免敲入回车 (hit-enter) 的提示。执行
+			外部命令时，这可能会使屏幕显示混乱。这时，用 <span class="Identifier">CTRL-L</span>
+			可以清理。
+			&quot;:silent menu ...&quot; 定义一个不会回显命令行命令的菜单。
+			但该命令仍然产生消息。如果连这也不要，在命令本身前用
+			&quot;:silent&quot;: &quot;:silent menu .... :silent command&quot;。
+
+						<span class="Constant">:uns</span> <span class="Constant">:unsilent</span>
+:uns[ilent] <span class="Special">{command}</span>	非安静模式执行命令 <span class="Special">{command}</span>。仅当在用了 <span class="Identifier">:silent</span> 之
+			后才有意义。
+			用此命令可以在用了 <span class="Identifier">:silent</span> 之后还是可以给出消息。下
+			例中，<span class="Identifier">:silent</span> 用于避免读入文件时给出消息，而
+			<span class="Identifier">:unsilent</span> 用于列出每个文件的第一行。
+<span class="Comment">    		:silent argdo unsilent echo expand('%') . &quot;: &quot; . getline(1)</span>
+
+
+						<span class="Constant">:verb</span> <span class="Constant">:verbose</span>
+:<span class="Special">[count]</span>verb[ose] <span class="Special">{command}</span>
+			执行命令 <span class="Special">{command}</span>，执行期间 <span class="Type">'verbose'</span> 设为 <span class="Special">[count]</span>。
+			如果忽略 <span class="Special">[count]</span>，缺省为 1。&quot;:0verbose&quot; 可以用来设置
+			<span class="Type">'verbose'</span> 为零。
+
+			在此基础之上再应用 &quot;:silent&quot;，可以产生相应详细度的消息
+			但不显示。&quot;:silent&quot; 和 &quot;:verbose&quot; 的组合因而可以只在内
+			部产生消息，然后用 <span class="Identifier">v:statusmsg</span> 或相关命令进行检查。
+			例如:
+<span class="Comment">				:let v:statusmsg = &quot;&quot;</span>
+<span class="Comment">				:silent verbose runtime foobar.vim</span>
+<span class="Comment">				:if v:statusmsg != &quot;&quot;</span>
+<span class="Comment">				:  &quot; foobar.vim 找不到</span>
+<span class="Comment">				:endif</span>
+			如果和别的命令相连接，&quot;:verbose&quot; 只适用于第一个命令:
+<span class="Comment">				:4verbose set verbose | set verbose</span>
+				  <span class="PreProc">verbose=4</span>
+				  <span class="PreProc">verbose=0</span>
+			要记录 verbose 消息到文件，用 <span class="Type">'verbosefile'</span> 选项。
+
+							<span class="Constant">:verbose-cmd</span>
+如果 <span class="Type">'verbose'</span> 非零，列出 Vim 选项、键映射、缩写、用户定义的函数或命令、高亮组
+或者自动命令的值会同时显示它最近被定义的位置。如果手动定义，不会有这个 &quot;Last
+set&quot; 消息。如果在执行函数、用户命令或者自动命令时定义，报告它定义所在的脚本。
+<span class="Special">{仅当编译时加入 </span><span class="Identifier">+eval</span><span class="Special"> 特性才有效}</span>
+
+							<span class="Constant">K</span>
+K			运行程序，查找光标下的关键字。该程序的名字由
+			<span class="Type">'keywordprg'</span> (kp) 选项给出 (缺省是 &quot;man&quot;)。该关键字由
+			字母、数值和 <span class="Type">'iskeyword'</span> 里的字符组成，它出现在光标所
+			在或右侧的位置。以下命令可以达到同样的效果
+<span class="Comment">				:!{program} {keyword}</span>
+			在 Vim 的 tools 目录下有一个示例程序。它叫作 <span class="Type">'ref'</span>，做
+			简单的拼写检查。
+			特例:
+			- 如果 <span class="Type">'keywordprg'</span> 为空，使用 &quot;:help&quot; 命令。此时，如
+			  果要找到更多帮助，应该在 <span class="Type">'iskeyword'</span> 里加入更多的字
+			  符。
+			- 如果 <span class="Type">'keywordprg'</span> 是 &quot;man&quot;，K 之前的计数会被插在
+			  &quot;man&quot; 命令之后和关键字之前。例如，如果光标在 &quot;mkdir&quot;
+			  之上用 &quot;2K&quot;，结果是:
+<span class="Comment">				!man 2 mkdir</span>
+			- 如果 <span class="Type">'keywordprg'</span> 是 &quot;man -s&quot;，K 之前的计数会插在
+			  &quot;-s&quot; 之后。如果没有计数，则去掉 &quot;-s&quot;。
+			<span class="Special">{Vi 无此功能}</span>
+
+							<span class="Constant">v_K</span>
+<span class="Special">{Visual}</span>K		和 &quot;K&quot; 类似，但用可视的高亮文本代替关键字。只在高亮文
+			本不超过一行时有效。<span class="Special">{Vi 无此功能}</span>
+
+<span class="Special">[N]</span>gs							<span class="Constant">gs</span> <span class="Constant">:sl</span> <span class="Constant">:sleep</span>
+:<span class="Special">[N]</span>sl[eep] <span class="Special">[N]</span>	[m]	停止 (睡眠) <span class="Special">[N]</span> 秒。如果有 [m]，停止 <span class="Special">[N]</span> 毫秒。&quot;gs&quot; 前
+			的计数总是表示秒数。缺省值是 1 秒。
+<span class="Comment">			     :sleep	     &quot;睡眠一秒</span>
+<span class="Comment">			     :5sleep	     &quot;睡眠五秒</span>
+<span class="Comment">			     :sleep 100m     &quot;睡眠一百毫秒</span>
+<span class="Comment">			     10gs	     &quot;睡眠十秒</span>
+			可以被 <span class="Special">CTRL-C</span> (MS-DOS 上的 <span class="Special">CTRL-Break</span>) 中断。
+			&quot;gs&quot; 代表 &quot;goto sleep&quot;。
+			睡眠时如果在可见位置的话，光标定位于文本处。
+			<span class="Special">{Vi 无此功能}</span>
+
+							<span class="Constant">g_CTRL-A</span>
+g <span class="Special">CTRL-A</span>		只有在 Vim 编译时定义了 MEM_PROFILING 才有效 (这很少
+			见): 显示内存用量的统计。只对调试 Vim 有用。
+
+<span class="PreProc">==============================================================================</span>
+2. 用 Vim 代替 less 或 more					<span class="Constant">less</span>
+
+如果你用 less 或 more 程序来查阅文件，你不会有语法高亮。所以，你也许会更喜欢
+用 Vim。你可以用外壳脚本 &quot;$VIMRUNTIME/macros/less.sh&quot; 来做到这一点。
+
+这个外壳脚本用到 Vim 脚本 &quot;$VIMRUNTIME/macros/less.vim&quot;。它设置了一些映射来模
+拟 less 支持的命令。除此以外，你可以正常使用 Vim 命令。
+
+这还没有尽善尽美。例如，即使查阅短的文件，Vim 还是会使用整屏。但对大多数应用而
+言，这已经足够好了。何况你还有语法高亮呢。
+
+&quot;h&quot; 键给你一个可用命令的简短小结。
+
+ vim&#0058;tw=78:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

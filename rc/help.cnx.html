@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/help.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Todo { color: #000000; background-color: #ffff00; padding-bottom: 1px; }
+.Constant { color: #c00000; }
+.Special { color: #c000c0; }
+.Identifier { color: #008080; }
+.PreProc { color: #c000c0; }
+.Type { color: #008000; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">help.txt</span>	For <span class="Identifier">Vim version 7.3.</span>  最近更新：2010年7月
+
+			VIM - 主帮助文件
+                                                                         k
+             移动:  使用光标键，或者用 &quot;h&quot; 向左，                      h   l
+                    &quot;j&quot; 向下，&quot;k&quot; 向上，&quot;l&quot; 向右。                       j
+       关闭本窗口:  使用 &quot;:q<span class="Special">&lt;Enter&gt;</span>&quot;。
+         离开 Vim&#0058;  使用 &quot;:qa!<span class="Special">&lt;Enter&gt;</span>&quot; (当心，所有的改动都会丢失!)。
+
+   跳转到一个主题:  将光标置于标签 (例如 <span class="Identifier">bars</span>) 上然后输入 <span class="Special">CTRL-]</span>。
+         使用鼠标:  &quot;:set mouse=a&quot; 启动对鼠标的支持 (用于 xterm 或 GUI)。
+		    在标签 (例如 <span class="Identifier">bars</span>) 上双击。
+             跳回:  键入 <span class="Special">CTRL-T</span> 或 <span class="Special">CTRL-O</span> (重复则继续向后)。
+
+     获取特定帮助:  在 <span class="Identifier">:help</span> 命令后给出参数可以直接跳转到任何的帮助主题。
+		    还可以进一步指定上下文:
+							<span class="Constant">help-context</span>
+		          <span class="PreProc">类别			前缀	   例子</span>
+		      普通模式命令		(无)	   :help x
+		      可视模式命令		 v_	   :help v_u
+		      插入模式命令		 i_	   :help i_<span class="Special">&lt;Esc&gt;</span>
+		      命令行模式命令		 :	   :help :quit
+		      命令行编辑		 c_	   :help c_<span class="Special">&lt;Del&gt;</span>
+		      Vim 命令参数		 -	   :help -r
+		      选项			 '	   :help <span class="Type">'textwidth'</span>
+	 查找帮助:  键入 &quot;:help word&quot;，接着键入 <span class="Special">CTRL-D</span> 可以看到匹配 &quot;word&quot; 的
+	 	    帮助主题。
+		    也可用 &quot;:helpgrep word&quot;。<span class="Identifier">:helpgrep</span>
+
+VIM 代表 Vi IMproved。VIM 主要由 Bram Moolenaar 编写，但没有许多其他人的帮助是
+不可能的。请见 <span class="Identifier">credits</span>。
+<span class="PreProc">------------------------------------------------------------------------------</span>
+						<span class="Constant">doc-file-list</span> <span class="Constant">Q_ct</span>
+基础:
+<span class="Identifier">quickref</span>	总览最常用的命令
+<span class="Identifier">tutor</span>		面向初学者的 30 分钟教程
+<span class="Identifier">copying</span>	版权信息
+<span class="Identifier">iccf</span>		资助乌干达贫困儿童
+<span class="Identifier">sponsor</span>	赞助 Vim 的开发，成为一名注册用户
+<span class="Identifier">www</span>		互联网上的 Vim
+<span class="Identifier">bugs</span>		如何提交漏洞报告
+
+用户手册：这些文件解释如何完成一项编辑任务。
+
+<span class="Identifier">usr_toc.txt</span>	目录
+
+<span class="PreProc">初步知识</span>
+<span class="Identifier">usr_01.txt</span>  关于本手册
+<span class="Identifier">usr_02.txt</span>  Vim 初步
+<span class="Identifier">usr_03.txt</span>  移动
+<span class="Identifier">usr_04.txt</span>  做小改动
+<span class="Identifier">usr_05.txt</span>  选项设置
+<span class="Identifier">usr_06.txt</span>  使用语法高亮
+<span class="Identifier">usr_07.txt</span>  编辑多个文件
+<span class="Identifier">usr_08.txt</span>  分割窗口
+<span class="Identifier">usr_09.txt</span>  使用 GUI 版本
+<span class="Identifier">usr_10.txt</span>  做大修改
+<span class="Identifier">usr_11.txt</span>  从崩溃中恢复
+<span class="Identifier">usr_12.txt</span>  小窍门
+
+<span class="PreProc">高效地编辑</span>
+<span class="Identifier">usr_20.txt</span>  快速键入命令行
+<span class="Identifier">usr_21.txt</span>  离开和回来
+<span class="Identifier">usr_22.txt</span>  寻找要编辑的文件
+<span class="Identifier">usr_23.txt</span>  编辑特殊文件
+<span class="Identifier">usr_24.txt</span>  快速插入
+<span class="Identifier">usr_25.txt</span>  编辑带格式的文本
+<span class="Identifier">usr_26.txt</span>  重复
+<span class="Identifier">usr_27.txt</span>  查找命令及模式
+<span class="Identifier">usr_28.txt</span>  折叠
+<span class="Identifier">usr_29.txt</span>  在代码间移动
+<span class="Identifier">usr_30.txt</span>  编辑程序
+<span class="Identifier">usr_31.txt</span>  利用 GUI
+<span class="Identifier">usr_32.txt</span>  撤销树
+
+<span class="PreProc">调节 Vim</span>
+<span class="Identifier">usr_40.txt</span>  创建新的命令
+<span class="Identifier">usr_41.txt</span>  编写 Vim 脚本
+<span class="Identifier">usr_42.txt</span>  添加新的菜单
+<span class="Identifier">usr_43.txt</span>  使用文件类型
+<span class="Identifier">usr_44.txt</span>  自定义语法高亮
+<span class="Identifier">usr_45.txt</span>  选择你的语言
+
+<span class="PreProc">让 Vim 工作</span>
+<span class="Identifier">usr_90.txt</span>  安装 Vim
+
+
+参考手册：这些文件详细地解释 Vim 的每个细节。			<span class="Constant">reference_toc</span>
+
+<span class="PreProc">一般主题</span>
+<span class="Identifier">intro.txt</span>	对 Vim 的一般介绍；帮助文件中所使用的符号
+<span class="Identifier">help.txt</span>	总览及快速参考 (本文件)
+<span class="Identifier">helphelp.txt</span>	关于如何使用帮助文件
+<span class="Identifier">index.txt</span>	以字母顺序排列的命令索引
+<span class="Identifier">help-tags</span>	可跳转的所有标签 (标签索引)
+<span class="Identifier">howto.txt</span>	如何完成最常见的编辑任务
+<span class="Identifier">tips.txt</span>	Vim 的各种窍门
+<span class="Identifier">message.txt</span>	(错误) 信息及解释
+<span class="Identifier">quotes.txt</span>	Vim 的用户评价
+<span class="Identifier">todo.txt</span>	已知的问题以及扩展计划
+<span class="Identifier">develop.txt</span>	Vim 的开发
+<span class="Identifier">debug.txt</span>	调试 Vim 自身
+<span class="Identifier">uganda.txt</span>	Vim 发布条件和怎么花你的 money
+
+<span class="PreProc">基本编辑</span>
+<span class="Identifier">starting.txt</span>	启动 Vim，Vim 命令参数，初始化
+<span class="Identifier">editing.txt</span>	编辑和写入文件
+<span class="Identifier">motion.txt</span>	有关移动的命令
+<span class="Identifier">scroll.txt</span>	在窗口中滚动文本
+<span class="Identifier">insert.txt</span>	插入模式和替换模式
+<span class="Identifier">change.txt</span>	删除和替换文本
+<span class="Identifier">indent.txt</span>	C 及其它语言的自动缩进
+<span class="Identifier">undo.txt</span>	撤消和重做
+<span class="Identifier">repeat.txt</span>	重复命令，Vim 脚本及调试
+<span class="Identifier">visual.txt</span>	使用可视模式 (选择一个文本区域)
+<span class="Identifier">various.txt</span>	各种其它命令
+<span class="Identifier">recover.txt</span>	从崩溃中恢复
+
+<span class="PreProc">高级编辑</span>
+<span class="Identifier">cmdline.txt</span>	命令行编辑
+<span class="Identifier">options.txt</span>	所有选项的描述
+<span class="Identifier">pattern.txt</span>	正则表达式及查找命令
+<span class="Identifier">map.txt</span>	键盘映射及缩写
+<span class="Identifier">tagsrch.txt</span>	标签及特殊查找
+<span class="Identifier">quickfix.txt</span>	支持快速 编辑-编译-修正 循环的命令
+<span class="Identifier">windows.txt</span>	使用多窗口多缓冲区的命令
+<span class="Identifier">tabpage.txt</span>	使用多个标签页的命令
+<span class="Identifier">syntax.txt</span>	语法高亮
+<span class="Identifier">spell.txt</span>	拼写检查
+<span class="Identifier">diff.txt</span>	编辑同一文本的两到四个版本
+<span class="Identifier">autocmd.txt</span>	当事件发生时自动执行命令
+<span class="Identifier">filetype.txt</span>	对某一类型文件的专有设定
+<span class="Identifier">eval.txt</span>	表达式求值，条件执行命令
+<span class="Identifier">fold.txt</span>	隐藏 (折叠) 一定范围内的文本
+
+<span class="PreProc">特殊问题</span>
+<span class="Identifier">print.txt</span>	打印
+<span class="Identifier">remote.txt</span>	将 Vim 用作服务器/客户端
+<span class="Identifier">term.txt</span>	使用不同终端和鼠标
+<span class="Identifier">digraph.txt</span>	可用的二合字母清单
+<span class="Identifier">mbyte.txt</span>	多字节文本支持
+<span class="Identifier">mlang.txt</span>	非英语语言支持
+<span class="Identifier">arabic.txt</span>	阿拉伯语支持及编辑
+<span class="Identifier">farsi.txt</span>	Farsi (波斯语) 编辑
+<span class="Identifier">hebrew.txt</span>	希伯来语支持及编辑
+<span class="Identifier">russian.txt</span>	俄罗斯语支持及编辑
+<span class="Identifier">ft_ada.txt</span>	Ada (编程语言) 支持
+<span class="Identifier">ft_sql.txt</span>	SQL 文件类型插件相关
+<span class="Identifier">hangulin.txt</span>	Hangul (韩语) 输入模式
+<span class="Identifier">rileft.txt</span>	从右向左的编辑模式
+
+<span class="PreProc">GUI</span>
+<span class="Identifier">gui.txt</span>	图形用户界面 (GUI)
+<span class="Identifier">gui_w16.txt</span>	Windows 3.1 GUI
+<span class="Identifier">gui_w32.txt</span>	Win32 GUI
+<span class="Identifier">gui_x11.txt</span>	X11 GUI
+
+<span class="PreProc">各种接口</span>
+<span class="Identifier">if_cscop.txt</span>	联用 cscope 与 Vim
+<span class="Identifier">if_lua.txt</span>	Lua 接口
+<span class="Identifier">if_mzsch.txt</span>	MzScheme 接口
+<span class="Identifier">if_perl.txt</span>	Perl 接口
+<span class="Identifier">if_pyth.txt</span>	Python 接口
+<span class="Identifier">if_sniff.txt</span>	SNiFF+ 接口
+<span class="Identifier">if_tcl.txt</span>	Tcl 接口
+<span class="Identifier">if_ole.txt</span>	Win32 下的 OLE 接口
+<span class="Identifier">if_ruby.txt</span>	Ruby 接口
+<span class="Identifier">debugger.txt</span>	与调试程序的接口
+<span class="Identifier">workshop.txt</span>	Sun Visual Workshop 接口
+<span class="Identifier">netbeans.txt</span>	NetBeans 外部编辑器接口
+<span class="Identifier">sign.txt</span>	调试标号
+
+<span class="PreProc">版本</span>
+<span class="Identifier">vi_diff.txt</span>	Vim 和 Vi 之间的主要区别
+<span class="Identifier">version4.txt</span>	Vim 3.0 和 4.x 版本的区别
+<span class="Identifier">version5.txt</span>	Vim 4.6 和 5.x 版本的区别
+<span class="Identifier">version6.txt</span>	Vim 5.7 和 6.x 版本的区别
+<span class="Identifier">version7.txt</span>	Vim 6.4 和 7.x 版本的区别
+						<span class="Constant">sys-file-list</span>
+<span class="PreProc">特定系统相关</span>
+<span class="Identifier">os_390.txt</span>	OS/390 Unix
+<span class="Identifier">os_amiga.txt</span>	Amiga
+<span class="Identifier">os_beos.txt</span>	BeOS 和 BeBox
+<span class="Identifier">os_dos.txt</span>	MS-DOS 和 MS-Windows NT/95 通用的条目
+<span class="Identifier">os_mac.txt</span>	Macintosh
+<span class="Identifier">os_mint.txt</span>	Atari MiNT
+<span class="Identifier">os_msdos.txt</span>	MS-DOS (纯 DOS 及 Windows 内的 DOS 窗口)
+<span class="Identifier">os_os2.txt</span>	OS/2
+<span class="Identifier">os_qnx.txt</span>	QNX
+<span class="Identifier">os_risc.txt</span>	RISC-OS
+<span class="Identifier">os_unix.txt</span>	Unix
+<span class="Identifier">os_vms.txt</span>	VMS
+<span class="Identifier">os_win32.txt</span>	MS-Windows 95/98/NT
+					<span class="Constant">standard-plugin-list</span>
+<span class="PreProc">标准插件</span>
+<span class="Identifier">pi_getscript.txt</span> 下载 Vim 脚本的最新版本
+<span class="Identifier">pi_gzip.txt</span>	   读写压缩过的文件
+<span class="Identifier">pi_netrw.txt</span>	   通过网络读写文件
+<span class="Identifier">pi_paren.txt</span>	   高亮匹配括号
+<span class="Identifier">pi_tar.txt</span>	   Tar 文件探索器
+<span class="Identifier">pi_vimball.txt</span>   创建自安装的 Vim 脚本
+<span class="Identifier">pi_zip.txt</span>	   Zip 归档探索器
+
+本地附加文档
+<span class="Identifier">local-additions</span>	请查阅英文文档
+
+
+<span class="PreProc">------------------------------------------------------------------------------</span>
+<span class="Constant">bars</span>		Bars 举例
+
+现在你已经通过 <span class="Special">CTRL-]</span> 或双击鼠标跳转到这里了，<span class="Special">CTRL-T</span>、<span class="Special">CTRL-O</span>、g<span class="Special">&lt;RightMouse&gt;</span>、
+或 <span class="Special">&lt;C-RightMouse&gt;</span> 可以用来跳回到你原来的地方。
+
+<span class="Todo">注意</span> 标签包含在两个 | 字符之间，但打开高亮时这些字符被隐藏，这样更易于命令的阅
+读。
+
+不过，你可以在任何单词上按 <span class="Special">CTRL-]</span>，即使该单词不出现在 | 之间也无妨。Vim 会试图
+寻找该单词的相关帮助，尤其是单引号之间的选项名，如 <span class="Type">'compatible'</span>。
+
+<span class="PreProc">------------------------------------------------------------------------------</span>
+ vim&#0058;tw=78:fo=tcq2:isk=!-~,^*,^\|,^\&quot;:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

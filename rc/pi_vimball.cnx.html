@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/pi_vimball.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Folded { color: #0000c0; background-color: #a8a8a8; padding-bottom: 1px; }
+.Special { color: #c000c0; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Todo { color: #000000; background-color: #ffff00; padding-bottom: 1px; }
+.Identifier { color: #008080; }
+.Statement { color: #af5f00; }
+.PreProc { color: #c000c0; }
+.Type { color: #008000; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">pi_vimball.txt</span>	For <span class="Identifier">Vim version 7.3.</span>  最近更新: 2010年7月
+
+			      --------------------
+			      Vimball 归档处理程序
+			      --------------------
+				<span class="Identifier">译者</span>: Willis
+				<span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>
+
+Author:  Charles E. Campbell, Jr.  &lt;NdrOchip@ScampbellPfamily.AbizM&gt;
+	  (remove NOSPAM from Campbell's email first)
+Copyright: (c) 2004-2009 by Charles E. Campbell, Jr.	<span class="Constant">Vimball-copyright</span>
+	   The VIM LICENSE applies to Vimball.vim, and Vimball.txt
+	   (see <span class="Identifier">copyright</span>) except use &quot;Vimball&quot; instead of &quot;Vim&quot;.
+	   No warranty, express or implied.
+	   Use At-Your-Own-Risk!
+
+<span class="PreProc">==============================================================================</span>
+1. 内容					<span class="Constant">vba</span> <span class="Constant">vimball</span> <span class="Constant">vimball-contents</span>
+
+	1. 内容..........................................: <span class="Identifier">vimball-contents</span>
+	2. Vimball 简介..................................: <span class="Identifier">vimball-intro</span>
+	3. Vimball 手册..................................: <span class="Identifier">vimball-manual</span>
+	   MkVimball.....................................: <span class="Identifier">:MkVimball</span>
+	   UseVimball....................................: <span class="Identifier">:UseVimball</span>
+	   RmVimball.....................................: <span class="Identifier">:RmVimball</span>
+	4. Vimball 历史..................................: <span class="Identifier">vimball-history</span>
+
+
+<span class="PreProc">==============================================================================</span>
+2. Vimball 简介							<span class="Constant">vimball-intro</span>
+
+	Vimball 的目标就是使插件用户的使用更方便。有了 vimball 以后，用户只需
+	要:
+<span class="Comment">		vim someplugin.vba</span>
+<span class="Comment">		:so %</span>
+<span class="Comment">		:q</span>
+	然后插件和它的所有部件都会被安装在合适的目录里。<span class="Todo">注意</span> 用户无须刻意进到
+	某个特定的目录来执行此命令。另外，插件的帮助也会被自动安装。
+
+	如果用户决定使用 AsNeeded 插件，vimball 会聪明地把本来要放到
+	.vim/plugin/ 中的脚本放到 .vim/AsNeeded/ 里去。
+
+	删除 vimball 安装的插件很容易:
+<span class="Comment">		vim</span>
+<span class="Comment">		:RmVimball someplugin</span>
+	举例说吧，zip 和 tarball 对应的操作就不是那么简单了。
+
+	Vimball 检视用户的 <span class="Identifier">'runtimepath'</span> 来确定把脚本放在哪里。如果可能，通
+	常使用 runtimepath 提到的第一个目录。用
+<span class="Comment">		:echo &amp;rtp</span>
+	来查看该目录。
+
+
+<span class="PreProc">==============================================================================</span>
+3. Vimball 手册						<span class="Constant">vimball-manual</span>
+
+<span class="Statement">创 建 VIMBALL							</span><span class="Constant">:MkVimball</span>
+		:<span class="Special">[range]</span>MkVimball[!] filename <span class="Special">[path]</span>
+
+	行范围内指定要保存在 vimball 里的文件的路径，但不包含通常在
+	runtimepath (<span class="Identifier">'rtp'</span>) 指定的那部分。例如:
+<span class="Comment">		plugin/something.vim</span>
+<span class="Comment">		doc/something.txt</span>
+	在此范围的行上使用
+<span class="Comment">		:[range]MkVimball filename</span>
+
+	建立文件 &quot;filename.vba&quot;，Vimball.vim 随后可以用它来还原那些文件。如果
+	文件 &quot;filename.vba&quot; 已经存在，MKVimball 会给出警告而不建立文件。<span class="Todo">注意</span>
+	这些路径都相对于你的 .vim (vimfiles) 目录，而所有文件都应该在该目录
+	下。更准确地说，vimball 插件通常使用 <span class="Type">'runtimepath'</span> 里第一个存在的目录
+	作为前缀；它不使用绝对路径，除非用户指定的就是如此。
+
+	如果使用感叹号 (!)，MkVimball 总是建立 &quot;filename.vba&quot; 文件。如果已经存
+	在则覆盖之。此行为和 <span class="Identifier">:w</span> 类似。
+
+	如要强制允许文件名中包含斜杠，也可用感叹号版本实现 (即 :MkVimball!
+	path/filename)。
+
+	<span class="Constant"><a href="http://vim.wikia.com/wiki/Using_VimBall_with_%27Make%27">http://vim.wikia.com/wiki/Using_VimBall_with_%27Make%27</a></span> 给出的技巧提供
+	了用 make 自动生成 vimball 的好方法。
+
+
+<span class="Statement">通 过 VIMBALL 建 立 目 录				</span><span class="Constant">g:vimball_mkdir</span>
+
+	首先尝试 <span class="Identifier">mkdir()</span> 命令 (并非所有系统都支持)。
+
+	如果该命令不存在，而且 g:vimball_mkdir 也不存在，它被设为:
+<span class="Comment">	  |g:netrw_local_mkdir|，如果存在的话</span>
+<span class="Comment">	  &quot;mkdir&quot;              ，如果可执行的话</span>
+<span class="Comment">	  &quot;makedir&quot;            ，如果可执行的话</span>
+<span class="Comment">	  否则                 ，未定义</span>
+	用户可以自定义 g:vimball_mkdir 来直接指定建立目录的命令。vimball 如有
+	需要，会通过该命令来建立目录。
+
+<span class="Statement">控 制 VIMBALL 提 取 目 录				</span><span class="Constant">g:vimball_home</span>
+
+	通过指定变量 g:vimball_home，你可以覆盖 <span class="Identifier">'runtimepath'</span> 的使用。
+
+							<span class="Constant">vimball-extract</span>
+		vim filename.vba
+
+	简单编辑一个 vimball 文件，Vimball.vim 会告诉用户必须执行 (source) 该
+	归档的内容才能提取其中的文件。
+
+	只有首行是 &quot;Vimball Archiver by Charles E. Campbell, Jr., Ph.D.&quot; 的文
+	件才会被认为是 vimball 文件，从而才会继续提取操作。
+
+<span class="Statement">列 出 VIMBALL 中 的 文 件				</span><span class="Constant">:VimballList</span>
+
+		:VimballList
+
+	本命令告诉 Vim 列出归档里的所有文件，包括每个文件的行数。
+
+<span class="Statement">手 动 执 行 VIMABALL 提 取				</span><span class="Constant">:UseVimball</span>
+
+		:UseVimball <span class="Special">[path]</span>
+
+	vimball 文件本身包含了该命令；它调用 vimball#Vimball() 例程，后者负责
+	对 vimball 解包。用户可以手动执行该命令，而无须执行 vimball；用户还可
+	以指定安装的路径来覆盖自动的选择，即 <span class="Identifier">'runtimepath'</span> 里的第一个存在的
+	目录。
+
+<span class="Statement">删 除 VIMBALL						</span><span class="Constant">:RmVimball</span>
+
+		:RmVimball vimballfile <span class="Special">[path]</span>
+
+	本命令删除制定 vimball 产生的所有文件 (但不包括它可能建立的任何目录)。
+	用户也选择卸载文件的路径 (见 <span class="Identifier">'runtimepath'</span>)；否则，缺省是
+	<span class="Type">'runtimepath'</span> 里的第一个存在的目录。
+	为了实现这一点，该目录下包含一个文件 (.VimballRecord)，它包含了目前为
+	止所有使用过的 vimball 中要删除的文件的记录。
+
+禁 止 载 入
+
+	如果由于某种原因你不想使用 vimball 提取插件，在 &lt;.vimrc&gt; 中加入以下两
+	个变量就可以不载入 vimball.vim:
+
+<span class="Comment">		let g:loaded_vimballPlugin= 1</span>
+<span class="Comment">		let g:loaded_vimball      = 1</span>
+
+<span class="Statement">WINDDOWS						</span><span class="Constant">vimball-windows</span>
+
+	许多 vimball 文件使用 gzip 压缩。Windows 不幸地没有自带解压 gzip 文件
+	的工具。幸运的是，Windows 用户可以找到不少解压 gzip 的工具:
+
+<span class="Comment">	    项目     工具/套件    免费   网站</span>
+<span class="Comment">	    ----     ----------   ----   -------</span>
+<span class="Comment">	    7zip        工具       是    <a href="http://www.7-zip.org/">http://www.7-zip.org/</a></span>
+<span class="Comment">	    Winzip      工具       否    <a href="http://www.winzip.com/downwz.htm">http://www.winzip.com/downwz.htm</a></span>
+<span class="Comment">	    unxutils    套件       是    <a href="http://unxutils.sourceforge.net/">http://unxutils.sourceforge.net/</a></span>
+<span class="Comment">	    cygwin      套件       是    <a href="http://www.cygwin.com/">http://www.cygwin.com/</a></span>
+<span class="Comment">	    GnuWin32    套件       是    <a href="http://gnuwin32.sourceforge.net/">http://gnuwin32.sourceforge.net/</a></span>
+<span class="Comment">	    MinGW       套件       是    <a href="http://www.mingw.org/">http://www.mingw.org/</a></span>
+
+
+<span class="PreProc">==============================================================================</span>
+<span class="Folded">+-- 71 行: 4. Vimball 历史 (英文)     *vimball-history* -------------------</span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

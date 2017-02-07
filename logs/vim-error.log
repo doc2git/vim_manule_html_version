@@ -1,0 +1,115 @@
+[Sat Jan 14 16:34:08.848843 2017] [authz_core:error] [pid 10767] [client 127.0.0.1:46988] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:34:42.066804 2017] [authz_core:error] [pid 10768] [client 127.0.0.1:46990] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:34:43.167963 2017] [authz_core:error] [pid 10768] [client 127.0.0.1:46990] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:34:44.376303 2017] [authz_core:error] [pid 10768] [client 127.0.0.1:46990] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:35:08.367192 2017] [authz_core:error] [pid 10769] [client 127.0.0.1:46992] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:35:17.572798 2017] [authz_core:error] [pid 10917] [client 127.0.0.1:47006] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:35:18.494137 2017] [authz_core:error] [pid 10917] [client 127.0.0.1:47006] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:35:19.306050 2017] [authz_core:error] [pid 10917] [client 127.0.0.1:47006] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:36:28.573220 2017] [authz_core:error] [pid 10918] [client 127.0.0.1:47008] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:36:29.458662 2017] [authz_core:error] [pid 10918] [client 127.0.0.1:47008] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:38:18.372353 2017] [authz_core:error] [pid 10921] [client 127.0.0.1:47014] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:44:16.950817 2017] [authz_core:error] [pid 11576] [client 127.0.0.1:47052] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:44:43.399087 2017] [authz_core:error] [pid 11577] [client 127.0.0.1:47054] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:44:44.711012 2017] [authz_core:error] [pid 11577] [client 127.0.0.1:47054] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sat Jan 14 16:44:49.685785 2017] [authz_core:error] [pid 11577] [client 127.0.0.1:47054] AH01630: client denied by server configuration: /home/git/.vim/doc-html
+[Sun Jan 15 21:56:56.484249 2017] [cgi:error] [pid 9605] [client 127.0.0.1:50634] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/grep.pl' failed
+[Sun Jan 15 21:56:56.485235 2017] [cgi:error] [pid 9605] [client 127.0.0.1:50634] End of script output before headers: grep.pl
+[Sun Jan 15 21:57:03.238445 2017] [cgi:error] [pid 9606] [client 127.0.0.1:50636] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/grep.pl' failed
+[Sun Jan 15 21:57:03.239527 2017] [cgi:error] [pid 9606] [client 127.0.0.1:50636] End of script output before headers: grep.pl
+[Sun Jan 15 22:03:04.826413 2017] [cgi:error] [pid 9609] [client 127.0.0.1:50766] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/grep.pl' failed
+[Sun Jan 15 22:03:04.827382 2017] [cgi:error] [pid 9609] [client 127.0.0.1:50766] End of script output before headers: grep.pl
+[Sun Jan 15 22:03:12.711416 2017] [cgi:error] [pid 9606] [client 127.0.0.1:50772] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/grep.pl' failed
+[Sun Jan 15 22:03:12.713233 2017] [cgi:error] [pid 9606] [client 127.0.0.1:50772] End of script output before headers: grep.pl
+[Sun Jan 15 22:43:19.413105 2017] [cgi:error] [pid 9605] [client 127.0.0.1:52944] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/get_argu.pl' failed
+[Sun Jan 15 22:43:19.414234 2017] [cgi:error] [pid 9605] [client 127.0.0.1:52944] End of script output before headers: get_argu.pl
+[Sun Jan 15 22:43:56.738194 2017] [cgi:error] [pid 9609] [client 127.0.0.1:52948] End of script output before headers: get_argu.pl
+[Sun Jan 15 22:43:57.878951 2017] [cgi:error] [pid 9606] [client 127.0.0.1:52956] End of script output before headers: get_argu.pl
+[Sun Jan 15 22:46:47.256643 2017] [cgi:error] [pid 9608] [client 127.0.0.1:53152] End of script output before headers: get_argu.pl
+[Sun Jan 15 22:47:04.259488 2017] [cgi:error] [pid 9714] [client 127.0.0.1:53156] End of script output before headers: get_argu.pl
+[Sun Jan 15 22:47:05.251482 2017] [cgi:error] [pid 9605] [client 127.0.0.1:53158] End of script output before headers: get_argu.pl
+[Sun Jan 15 22:48:09.330172 2017] [cgi:error] [pid 9609] [client 127.0.0.1:53166] End of script output before headers: get_argu.pl
+[Sun Jan 15 22:48:51.165525 2017] [cgi:error] [pid 9606] [client 127.0.0.1:53168] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:48:52.063954 2017] [cgi:error] [pid 9607] [client 127.0.0.1:53170] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:48:53.051161 2017] [cgi:error] [pid 9608] [client 127.0.0.1:53172] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:48:54.113753 2017] [cgi:error] [pid 9714] [client 127.0.0.1:53174] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:07.897286 2017] [cgi:error] [pid 9605] [client 127.0.0.1:53178] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:09.782738 2017] [cgi:error] [pid 9609] [client 127.0.0.1:53180] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:12.145665 2017] [cgi:error] [pid 9606] [client 127.0.0.1:53182] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:22.311089 2017] [cgi:error] [pid 9607] [client 127.0.0.1:53184] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:23.466403 2017] [cgi:error] [pid 9608] [client 127.0.0.1:53186] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:25.271747 2017] [cgi:error] [pid 9714] [client 127.0.0.1:53188] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:33.043488 2017] [cgi:error] [pid 9605] [client 127.0.0.1:53194] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:33.957191 2017] [cgi:error] [pid 9609] [client 127.0.0.1:53196] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:34.853786 2017] [cgi:error] [pid 9606] [client 127.0.0.1:53198] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:49:36.293797 2017] [cgi:error] [pid 9607] [client 127.0.0.1:53200] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:56:54.736232 2017] [cgi:error] [pid 13482] [client 127.0.0.1:53626] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:57:39.623282 2017] [cgi:error] [pid 13481] [client 127.0.0.1:53628] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:57:40.575083 2017] [cgi:error] [pid 13484] [client 127.0.0.1:53630] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:57:41.782596 2017] [cgi:error] [pid 13483] [client 127.0.0.1:53632] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:57:42.767696 2017] [cgi:error] [pid 13485] [client 127.0.0.1:53634] malformed header from script 'get_argu.pl': Bad header: hello
+[Sun Jan 15 22:59:24.612740 2017] [cgi:error] [pid 13484] [client 127.0.0.1:53642] AH01215: Global symbol "$input" requires explicit package name at /var/www/cgi-bin/get_argu.pl line 6.
+[Sun Jan 15 22:59:24.612828 2017] [cgi:error] [pid 13484] [client 127.0.0.1:53642] AH01215: Execution of /var/www/cgi-bin/get_argu.pl aborted due to compilation errors.
+[Sun Jan 15 22:59:24.613392 2017] [cgi:error] [pid 13484] [client 127.0.0.1:53642] End of script output before headers: get_argu.pl
+[Sun Jan 15 23:02:55.387891 2017] [cgi:error] [pid 13920] [client 127.0.0.1:53662] AH01215: Global symbol "$input" requires explicit package name at /var/www/cgi-bin/get_argu.pl line 6.
+[Sun Jan 15 23:02:55.388023 2017] [cgi:error] [pid 13920] [client 127.0.0.1:53662] AH01215: Execution of /var/www/cgi-bin/get_argu.pl aborted due to compilation errors.
+[Sun Jan 15 23:02:55.388317 2017] [cgi:error] [pid 13920] [client 127.0.0.1:53662] End of script output before headers: get_argu.pl
+[Sun Jan 15 23:02:56.732739 2017] [cgi:error] [pid 13922] [client 127.0.0.1:53664] AH01215: Global symbol "$input" requires explicit package name at /var/www/cgi-bin/get_argu.pl line 6.
+[Sun Jan 15 23:02:56.732839 2017] [cgi:error] [pid 13922] [client 127.0.0.1:53664] AH01215: Execution of /var/www/cgi-bin/get_argu.pl aborted due to compilation errors.
+[Sun Jan 15 23:02:56.733497 2017] [cgi:error] [pid 13922] [client 127.0.0.1:53664] End of script output before headers: get_argu.pl
+[Sun Jan 15 23:02:57.675688 2017] [cgi:error] [pid 13923] [client 127.0.0.1:53666] AH01215: Global symbol "$input" requires explicit package name at /var/www/cgi-bin/get_argu.pl line 6.
+[Sun Jan 15 23:02:57.675836 2017] [cgi:error] [pid 13923] [client 127.0.0.1:53666] AH01215: Execution of /var/www/cgi-bin/get_argu.pl aborted due to compilation errors.
+[Sun Jan 15 23:02:57.676563 2017] [cgi:error] [pid 13923] [client 127.0.0.1:53666] End of script output before headers: get_argu.pl
+[Sun Jan 15 23:02:58.533015 2017] [cgi:error] [pid 13942] [client 127.0.0.1:53668] AH01215: Global symbol "$input" requires explicit package name at /var/www/cgi-bin/get_argu.pl line 6.
+[Sun Jan 15 23:02:58.533148 2017] [cgi:error] [pid 13942] [client 127.0.0.1:53668] AH01215: Execution of /var/www/cgi-bin/get_argu.pl aborted due to compilation errors.
+[Sun Jan 15 23:02:58.533627 2017] [cgi:error] [pid 13942] [client 127.0.0.1:53668] End of script output before headers: get_argu.pl
+[Sun Jan 15 23:12:28.680477 2017] [cgi:error] [pid 13919] [client 127.0.0.1:53706] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/test1.html' failed
+[Sun Jan 15 23:12:28.680965 2017] [cgi:error] [pid 13919] [client 127.0.0.1:53706] End of script output before headers: test1.html
+[Sun Jan 15 23:13:28.826532 2017] [cgi:error] [pid 13921] [client 127.0.0.1:53708] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/test1.html' failed
+[Sun Jan 15 23:13:28.828174 2017] [cgi:error] [pid 13921] [client 127.0.0.1:53708] End of script output before headers: test1.html
+[Sun Jan 15 23:13:29.787194 2017] [cgi:error] [pid 13920] [client 127.0.0.1:53710] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/test1.html' failed
+[Sun Jan 15 23:13:29.788844 2017] [cgi:error] [pid 13920] [client 127.0.0.1:53710] End of script output before headers: test1.html
+[Sun Jan 15 23:13:31.452725 2017] [cgi:error] [pid 13922] [client 127.0.0.1:53712] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/test1.html' failed
+[Sun Jan 15 23:13:31.453850 2017] [cgi:error] [pid 13922] [client 127.0.0.1:53712] End of script output before headers: test1.html
+[Sun Jan 15 23:13:32.396922 2017] [cgi:error] [pid 13923] [client 127.0.0.1:53716] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/test1.html' failed
+[Sun Jan 15 23:13:32.398517 2017] [cgi:error] [pid 13923] [client 127.0.0.1:53716] End of script output before headers: test1.html
+[Sun Jan 15 23:14:54.588860 2017] [cgi:error] [pid 13942] [client 127.0.0.1:53718] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/test1.html' failed
+[Sun Jan 15 23:14:54.590017 2017] [cgi:error] [pid 13942] [client 127.0.0.1:53718] End of script output before headers: test1.html
+[Sun Jan 15 23:14:55.723837 2017] [cgi:error] [pid 13919] [client 127.0.0.1:53720] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/test1.html' failed
+[Sun Jan 15 23:14:55.725059 2017] [cgi:error] [pid 13919] [client 127.0.0.1:53720] End of script output before headers: test1.html
+[Sun Jan 15 23:14:57.119753 2017] [cgi:error] [pid 13921] [client 127.0.0.1:53722] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/test1.html' failed
+[Sun Jan 15 23:14:57.121076 2017] [cgi:error] [pid 13921] [client 127.0.0.1:53722] End of script output before headers: test1.html
+[Mon Jan 16 11:00:08.301643 2017] [cgi:error] [pid 13799] [client 127.0.0.1:39808] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:00:17.876740 2017] [cgi:error] [pid 13797] [client 127.0.0.1:39810] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:00:19.315691 2017] [cgi:error] [pid 13797] [client 127.0.0.1:39810] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:00:21.104261 2017] [cgi:error] [pid 13797] [client 127.0.0.1:39810] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:00:24.747731 2017] [cgi:error] [pid 13797] [client 127.0.0.1:39810] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:00:27.297641 2017] [cgi:error] [pid 13797] [client 127.0.0.1:39810] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:00:45.300783 2017] [cgi:error] [pid 13796] [client 127.0.0.1:39842] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:00:46.774601 2017] [cgi:error] [pid 13796] [client 127.0.0.1:39842] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:02:37.503502 2017] [cgi:error] [pid 13618] [client 127.0.0.1:39856] AH01215: /var/www/cgi-bin/mycript: line 2: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:02:38.344232 2017] [cgi:error] [pid 13618] [client 127.0.0.1:39856] AH01215: /var/www/cgi-bin/mycript: line 2: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:02:39.297847 2017] [cgi:error] [pid 13618] [client 127.0.0.1:39856] AH01215: /var/www/cgi-bin/mycript: line 2: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:04:07.460909 2017] [cgi:error] [pid 13619] [client 127.0.0.1:39858] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:08.532624 2017] [cgi:error] [pid 13619] [client 127.0.0.1:39858] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:09.373022 2017] [cgi:error] [pid 13619] [client 127.0.0.1:39858] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:10.867584 2017] [cgi:error] [pid 13619] [client 127.0.0.1:39858] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:11.838935 2017] [cgi:error] [pid 13619] [client 127.0.0.1:39858] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:12.841016 2017] [cgi:error] [pid 13619] [client 127.0.0.1:39858] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:13.655108 2017] [cgi:error] [pid 13619] [client 127.0.0.1:39858] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:54.601444 2017] [cgi:error] [pid 13620] [client 127.0.0.1:39860] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:55.448954 2017] [cgi:error] [pid 13620] [client 127.0.0.1:39860] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:56.481185 2017] [cgi:error] [pid 13620] [client 127.0.0.1:39860] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:04:57.316451 2017] [cgi:error] [pid 13620] [client 127.0.0.1:39860] AH01215: /var/www/cgi-bin/mycript: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:05:01.339336 2017] [cgi:error] [pid 13620] [client 127.0.0.1:39860] AH01215: /var/www/cgi-bin/mycript.sh: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:05:13.765375 2017] [cgi:error] [pid 13621] [client 127.0.0.1:39862] AH01215: /var/www/cgi-bin/mycript.sh: line 3: /home/www/cgi-bin/proccgi: No such file or directory
+[Mon Jan 16 11:06:50.169241 2017] [cgi:error] [pid 13622] [client 127.0.0.1:39868] AH01215: /var/www/cgi-bin/mycript: line 2: /home/www/cgi-bin/proccgi.sh: No such file or directory
+[Mon Jan 16 11:13:30.934391 2017] [cgi:error] [pid 13794] [client 127.0.0.1:40064] AH01215: Global symbol "$input" requires explicit package name at /var/www/cgi-bin/get_argu.pl line 6.
+[Mon Jan 16 11:13:30.934481 2017] [cgi:error] [pid 13794] [client 127.0.0.1:40064] AH01215: Execution of /var/www/cgi-bin/get_argu.pl aborted due to compilation errors.
+[Mon Jan 16 11:13:30.934690 2017] [cgi:error] [pid 13794] [client 127.0.0.1:40064] End of script output before headers: get_argu.pl
+[Mon Jan 16 11:13:57.211793 2017] [cgi:error] [pid 13798] [client 127.0.0.1:40066] AH01215: Global symbol "$input" requires explicit package name at /var/www/cgi-bin/get_argu.pl line 6.
+[Mon Jan 16 11:13:57.211891 2017] [cgi:error] [pid 13798] [client 127.0.0.1:40066] AH01215: Execution of /var/www/cgi-bin/get_argu.pl aborted due to compilation errors.
+[Mon Jan 16 11:13:57.212457 2017] [cgi:error] [pid 13798] [client 127.0.0.1:40066] End of script output before headers: get_argu.pl
+[Mon Jan 16 15:04:51.200253 2017] [cgi:error] [pid 1830] [client 127.0.0.1:40804] AH01215: (13)Permission denied: exec of '/var/www/cgi-bin/hello.pl' failed
+[Mon Jan 16 15:04:51.201284 2017] [cgi:error] [pid 1830] [client 127.0.0.1:40804] End of script output before headers: hello.pl
+[Mon Jan 16 15:22:16.005872 2017] [cgi:error] [pid 1812] [client 127.0.0.1:40816] attempt to invoke directory as script: /var/www/cgi-bin/

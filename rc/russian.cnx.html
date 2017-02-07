@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/russian.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Comment { color: #0000c0; }
+.Constant { color: #c00000; }
+.Identifier { color: #008080; }
+.PreProc { color: #c000c0; }
+.Type { color: #008000; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">russian.txt</span>   For <span class="Identifier">Vim version 7.3.</span>  最近更新: 2006年7月
+
+
+		  <span class="Identifier">VIM 参考手册            by Vassily Ragosin</span>
+				<span class="Identifier">译者</span>: Willis
+				<span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>
+
+
+Vim 中的俄罗斯语的本地化和支持                             <span class="Constant">russian</span> <span class="Constant">Russian</span>
+
+1. 简介					  <span class="Identifier">russian-intro</span>
+2. 俄语键盘映射				  <span class="Identifier">russian-keymap</span>
+3. 本地化				  <span class="Identifier">russian-l18n</span>
+4. 已知漏洞				  <span class="Identifier">russian-issues</span>
+
+<span class="PreProc">===============================================================================</span>
+1. 简介								<span class="Constant">russian-intro</span>
+
+Vim 的俄罗斯语支持已经相当完善。你可以像其他语言一样输入和查看俄语文字，无须特
+别改变设置。
+
+<span class="PreProc">===============================================================================</span>
+2. 俄语键盘映射						       <span class="Constant">russian-keymap</span>
+
+要切换语言，你可以使用系统自带的键盘切换工具。你也可以使用 Vim 发布中的某一个
+俄语的键盘映射。例如，
+
+<span class="Comment">    :set keymap=russian-jcukenwin</span>
+
+如果是后者，即使你没有系统俄语键盘或者一个独立的系统范围内的键盘设置，你还是可
+以在语言间切换，参看 <span class="Type">'keymap'</span>。你也可以专门映射一个键来进行键盘切换。如果你选择
+这么做，参看 <span class="Identifier">:map</span>。
+
+为了你的方便起见，为了避免直接键盘切换，当你需要键入普通模式的命令时，你可以使
+用 <span class="Type">'langmap'</span> 选项:
+
+<span class="Comment">    :set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,</span>
+<span class="Comment">    фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz</span>
+
+这是 utf-8 编码的，如果你的 <span class="Type">'encoding'</span> 不是，你无法正常阅读。你也必须在一行内
+输入整个命令，上面的文字换了行，但只是为了方便阅读起见。
+
+<span class="PreProc">===============================================================================</span>
+3. 本地化							 <span class="Constant">russian-l18n</span>
+
+如果你希望把消息，帮助文件，菜单，和其他项目翻译成俄语，你需要安装 RuVim 语言
+包。多种代码页的该软件可以从这里得到:
+
+    <span class="Constant"><a href="http://www.sourceforge.net/projects/ruvim/">http://www.sourceforge.net/projects/ruvim/</a></span>
+
+请你确定你的 Vim 至少是 6.2.506 或以上的版本，并且如果要自动安装，请使用 ruvim
+0.5 或以上的版本。Vim 必须在编译时加入 <span class="Identifier">+gettext</span> 特性，才能使用户界面的项目被
+翻译。
+
+下载了 RuVim 项目的软件包以后，把它解压到 $VIMRUNTIME 目录。如果你的 Vim 编译
+时加入 <span class="Identifier">+multi_byte</span> 特性的话，我们建议使用 UTF-8 包。
+
+要看到俄语的文档，请将 <span class="Type">'helplang'</span> 选项设为 &quot;ru&quot;。
+
+<span class="PreProc">===============================================================================</span>
+4. 已知漏洞						       <span class="Constant">russian-issues</span>
+
+-- 如果你在 Win32 控制台使用俄语的消息翻译，那你也许会看 &quot;vim --help&quot;、
+   &quot;vim --version&quot; 命令和 Win32 控制窗口的标题使用了错误的代码页。这是由 GNU
+   gettext 库的一个问题造成的，将来的 gettext 的发布也许能解决这个问题。
+
+<span class="PreProc">===============================================================================</span>
+ vim&#0058;tw=78:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/.vim/doc_origin_b/howto.cnx.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="help">
+<meta name="settings" content="use_css,pre_wrap,no_foldcolumn,prevent_copy=">
+<meta name="colorscheme" content="none">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+* { font-size: 1em; }
+.Constant { color: #c00000; }
+.Identifier { color: #008080; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+-->
+</script>
+</head>
+<body>
+<pre id='vimCodeElement'>
+<span class="Constant">howto.txt</span>	For <span class="Identifier">Vim version 7.3.</span>  最近更新: 2006年5月
+
+
+		     Vim 参考手册    作者：Bram Moolenaar
+	   <span class="Identifier">译者</span>: iCrazy &lt;icrazy@ustc.edu&gt;  <span class="Constant"><a href="http://vimcdoc.sf.net">http://vimcdoc.sf.net</a></span>
+
+
+如何……					<span class="Constant">howdoi</span> <span class="Constant">how-do-i</span> <span class="Constant">howto</span> <span class="Constant">how-to</span>
+
+<span class="Identifier">tutor</span>			入门
+<span class="Identifier">:quit</span>			退出？我被困住了，请帮帮我！
+<span class="Identifier">initialization</span>	初始化 Vim
+<span class="Identifier">vimrc-intro</span>		写一个 Vim 脚本文件 (vimrc)
+<span class="Identifier">suspend</span>		挂起 Vim
+<span class="Identifier">usr_11.txt</span>		在一次崩溃后恢复
+<span class="Identifier">07.4</span>			在覆盖我的文件时保留一个备份
+
+<span class="Identifier">usr_07.txt</span>		编辑文件
+<span class="Identifier">23.4</span>			编辑二进制文件
+<span class="Identifier">usr_24.txt</span>		插入文本
+<span class="Identifier">deleting</span>		删除文本
+<span class="Identifier">usr_04.txt</span>		改变文本
+<span class="Identifier">04.5</span>			复制和移动文本
+<span class="Identifier">usr_25.txt</span>		给文本排版
+<span class="Identifier">30.6</span>			给注释排版
+<span class="Identifier">30.2</span>			缩进 C 程序
+<span class="Identifier">25.3</span>			自动设置缩进
+
+<span class="Identifier">usr_26.txt</span>		重复执行命令
+<span class="Identifier">02.5</span>			撤销和重做
+
+<span class="Identifier">usr_03.txt</span>		在文本中移动
+<span class="Identifier">word-motions</span>		基于单词的移动
+<span class="Identifier">left-right-motions</span>	左右移动
+<span class="Identifier">up-down-motions</span>	上下移动
+<span class="Identifier">object-motions</span>	基于文本对象的移动
+<span class="Identifier">various-motions</span>	其它移动方式
+<span class="Identifier">object-select</span>		基于文本对象的选择
+<span class="Identifier">'whichwrap'</span>		移动时跳过换行符
+<span class="Identifier">'virtualedit'</span>		移动到没有文本的地方
+<span class="Identifier">usr_27.txt</span>		指定查找的模式
+<span class="Identifier">tags-and-searches</span>	进行标签和特殊查找
+<span class="Identifier">29.4</span>			在包含文件中查找变量、函数或宏
+<span class="Identifier">K</span>			查找光标处关键词的手册页
+
+<span class="Identifier">03.7</span>			滚屏
+<span class="Identifier">'sidescroll'</span>		水平/竖直方向滚屏
+<span class="Identifier">'scrolloff'</span>		设置可见的上下文行数
+
+<span class="Identifier">mode-switching</span>	切换模式
+<span class="Identifier">04.4</span>			使用可视模式
+<span class="Identifier">'insertmode'</span>		以插入模式启动 Vim
+
+<span class="Identifier">40.1</span>			映射热键
+<span class="Identifier">24.7</span>			创建缩写
+
+<span class="Identifier">ins-expandtab</span>		在插入模式下用空格扩展制表符
+<span class="Identifier">i_CTRL-R</span>		在插入模式下插入寄存器的内容
+<span class="Identifier">24.3</span>			在插入模式下自动补全单词
+<span class="Identifier">25.1</span>			断开过长的行
+
+<span class="Identifier">20.1</span>			编辑命令行
+<span class="Identifier">20.3</span>			命令行自动补全
+<span class="Identifier">'cmdheight'</span>		增加命令行的高度
+<span class="Identifier">10.3</span>			指定命令行范围
+<span class="Identifier">40.3</span>			指定在 读/写 或 进入/离开 缓冲区/窗口 之前/之后
+			自动执行命令
+
+<span class="Identifier">'autowrite'</span>		自动存盘
+<span class="Identifier">30.1</span>			加速 编辑-编译-编辑 循环，在 Vim 里面编译和修正错误
+
+<span class="Identifier">options</span>		设置选项
+<span class="Identifier">auto-setting</span>		自动设置选项
+<span class="Identifier">term-dependent-settings</span> 设置依赖于终端名称的选项
+<span class="Identifier">save-settings</span>		保存设置
+<span class="Identifier">:quote</span>		对我的 .vim 文件进行注释
+<span class="Identifier">'helpheight'</span>		调整默认的帮助高度
+<span class="Identifier">'highlight'</span>		设置各种高亮模式
+<span class="Identifier">'title'</span>		设置窗口标题
+<span class="Identifier">'icon'</span>		设置窗口图标标题
+<span class="Identifier">'report'</span>		避免看到每一行上的改变信息
+<span class="Identifier">'shortmess'</span>		避免按回车 <span class="Identifier">hit-enter</span> 提示
+
+<span class="Identifier">mouse-using</span>		在 Vim 中使用鼠标
+<span class="Identifier">usr_08.txt</span>		管理多窗口和缓冲区
+<span class="Identifier">gui.txt</span>		使用 GUI
+
+|您 (还) 不能！|	用 Vim 洗盘子 :)
+
+<span class="Identifier">usr_06.txt</span>		打开语法高亮
+<span class="Identifier">2html.vim</span>		把一个彩色的文件转换成 HTML
+<span class="Identifier">less</span>			用 Vim 模拟 less 或 more，但带有语法高亮
+
+ vim&#0058;tw=78:ts=8:ft=help:norl:
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
